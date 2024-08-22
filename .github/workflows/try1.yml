@@ -1,0 +1,26 @@
+name: Try
+
+on:
+  push:
+    branches:
+      - main
+  
+env:
+  str1: "{\"name\":\"Tempura\"}"
+  str2: '["push", "pull_request"]'
+
+defaults:
+  run:
+    working-directory: compiler
+
+jobs:
+  discover_yarn_workspaces:
+    name: Discover yarn workspaces
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: s1
+        run: | 
+          echo ${{fromJSON('["push", "pull_request"]')}}
+          echo ${{fromJSON(env.str1)}}
