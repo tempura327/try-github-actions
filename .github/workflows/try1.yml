@@ -3,15 +3,11 @@ name: Try
 on:
   push:
     branches:
-      - main
+      - master
   
 env:
   str1: "{\"name\":\"Tempura\"}"
   str2: '["push", "pull_request"]'
-
-defaults:
-  run:
-    working-directory: compiler
 
 jobs:
   discover_yarn_workspaces:
