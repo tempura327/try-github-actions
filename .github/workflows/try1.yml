@@ -43,6 +43,7 @@ jobs:
           # 以下屬性一定不存在
           # 得到undefined
           echo ${{fromJSON(env.str1).xxx}}
+          echo ${{fromJSON(env.str1).xxx == null}}
           # 得到陣列
           echo ${{fromJSON(env.str2).*.xxx}}
           echo "----------"
