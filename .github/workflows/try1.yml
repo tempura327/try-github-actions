@@ -71,5 +71,7 @@ jobs:
         run: |
           # https://github.com/orgs/community/discussions/27125
           # https://stackoverflow.com/questions/68032967/check-for-element-in-an-array-in-github-action-script
-          echo "array=("element1" "element2" "element3")"
-          echo $array[@]
+          echo "array=("element1" "element2" "element3")" >> $GITHUB_ENV
+          echo ${#array[@]}
+          echo ${$array[@]}
+          echo ${{env.array}}
