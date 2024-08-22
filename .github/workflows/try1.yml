@@ -48,7 +48,14 @@ jobs:
           echo "----------"
           echo ${{fromJSON(env.str2).*.xxx[0]}}
           echo ${{fromJSON(env.str2).*.xxx[0][0][0][0][0][0][0][0][0][0][0][0]}}
+          # 確認是不是null
+          echo ${{fromJSON(env.str2).*.xxx[0] == null}}
           echo "----------"
           echo ${{fromJSON(env.str2).*.xxx == '[]'}}
           echo ${{fromJSON(env.str2).*.xxx != '[]'}}
           echo ${{fromJSON(env.str2).*.xxx == '[undefined, undefined]'}}
+
+      - name: try to find out length
+        run: |
+        # https://github.com/orgs/community/discussions/27125
+        # https://stackoverflow.com/questions/68032967/check-for-element-in-an-array-in-github-action-script
