@@ -7,7 +7,7 @@ on:
   
 env:
   str1: "{\"name\":\"Tempura\", \"jobs\":{\"fullTime\":\"frontend developer\", \"partTime\":\"no\"}, \"favorites\":[\"tempura ninja\"]}"
-  str2: '["push", "pull_request"]'
+  str2: '[{\"name\":\"Tempura\"}, {\"name\":\"Ninja\"}]'
 
 jobs:
   discover_yarn_workspaces:
@@ -24,12 +24,19 @@ jobs:
       - name: s2
         run: | 
           echo ${{toJSON(fromJSON(env.str1))}}
-          echo ${{toJSON(fromJSON(env.str2))}}
+          # toJSON處理陣列會報錯 "line 2: name:: command not found"
+          # echo ${{toJSON(fromJSON(env.str2))}}
 
       - name: s3
         run: | 
           echo ${{fromJSON(env.str1).name}}
           echo ${{fromJSON(env.str1).jobs}}
           echo ${{fromJSON(env.str1).favorites}}
-          # 這個屬性一定不存在
+          echo ${{fromJSON(env.str2).*.name}}
+          echo ${{fromJSON(env.str2)[0]}}
+
+      - name: try to access undefined property
+        run: |  
+          # 以下屬性一定不存在
           echo ${{fromJSON(env.str1).xxx}}
+          echo ${{fromJSON(env.str2).*.xxx}}
