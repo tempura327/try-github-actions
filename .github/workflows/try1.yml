@@ -36,9 +36,15 @@ jobs:
           echo ${{fromJSON(env.str1).favorites}}
           echo ${{fromJSON(env.str2).*.name}}
           echo ${{fromJSON(env.str2)[0]}}
+          echo ${{fromJSON(env.str2)[0].name}}
 
       - name: try to access undefined property
         run: |  
           # 以下屬性一定不存在
+          # 得到undefined
           echo ${{fromJSON(env.str1).xxx}}
+          # 得到陣列
           echo ${{fromJSON(env.str2).*.xxx}}
+          echo ${{fromJSON(env.str2).*.xxx == '[]'}}
+          echo ${{fromJSON(env.str2).*.xxx != '[]'}}
+          echo ${{fromJSON(env.str2).*.xxx == '[undefined, undefined]'}}
