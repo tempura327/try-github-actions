@@ -21,13 +21,13 @@ jobs:
         run: | 
           echo ${{fromJSON(env.str1)}}
           echo ${{fromJSON(env.str2)}}
+          echo ${{fromJSON(env.str3)}}
 
-      - name: s2
-        run: | 
-          echo ${{toJSON(fromJSON(env.str3))}}
-          # toJSON處理陣列會報錯 "line 2: name:: command not found"
+      # - name: s2
+        # run: | 
+          # toJSON處理物件、陣列會報錯 "line 2: name:: command not found"
+          # echo ${{toJSON(fromJSON(env.str3))}}
           # echo ${{toJSON(fromJSON(env.str2))}}
-          # str1有包含陣列所以也會報錯
 
       - name: s3
         run: | 
