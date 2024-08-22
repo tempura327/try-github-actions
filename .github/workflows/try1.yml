@@ -23,11 +23,13 @@ jobs:
           echo ${{fromJSON(env.str2)}}
           echo ${{fromJSON(env.str3)}}
 
-      # - name: s2
-        # run: | 
+      - name: s2
+        run: | 
           # toJSON處理物件、陣列會報錯 "line 2: name:: command not found"
           # echo ${{toJSON(fromJSON(env.str3))}}
           # echo ${{toJSON(fromJSON(env.str2))}}
+          echo "----------"
+          echo "${{ toJSON(fromJSON(env.str3)) }}"
 
       - name: s3
         run: | 
@@ -41,17 +43,21 @@ jobs:
       - name: try to access undefined property
         run: |  
           # 以下屬性一定不存在
-          # 得到undefined
+          # 得到null
           echo ${{fromJSON(env.str1).xxx}}
+          # 得到true
           echo ${{fromJSON(env.str1).xxx == null}}
           # 得到陣列
           echo ${{fromJSON(env.str2).*.xxx}}
+
           echo "----------"
+          # 以下都得到貞烈
           echo ${{fromJSON(env.str2).*.xxx[0]}}
           echo ${{fromJSON(env.str2).*.xxx[0][0][0][0][0][0][0][0][0][0][0][0]}}
-          # 確認是不是null
+          # 得到false
           echo ${{fromJSON(env.str2).*.xxx[0] == null}}
           echo "----------"
+          # 得到false, true, false
           echo ${{fromJSON(env.str2).*.xxx == '[]'}}
           echo ${{fromJSON(env.str2).*.xxx != '[]'}}
           echo ${{fromJSON(env.str2).*.xxx == '[undefined, undefined]'}}
