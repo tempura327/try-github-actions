@@ -7,7 +7,7 @@ on:
   
 env:
   str1: "{\"name\":\"Tempura\", \"jobs\":{\"fullTime\":\"frontend developer\", \"partTime\":\"no\"}, \"favorites\":[\"tempura ninja\"]}"
-  str2: '[{\"name\":\"Tempura\"}, {\"name\":\"Ninja\"}]'
+  str2: '[{"name":"Tempura"}, {"name":"Ninja"}]'
 
 jobs:
   discover_yarn_workspaces:
