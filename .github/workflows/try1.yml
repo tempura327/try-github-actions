@@ -23,14 +23,14 @@ jobs:
           echo ${{fromJSON(env.str2)}}
           echo ${{fromJSON(env.str3)}}
 
-      - name: s2
-        run: | 
+      # - name: s2
+        # run: | 
           # toJSON處理物件、陣列會報錯 "line 2: name:: command not found"
+          # https://docs.github.com/en/enterprise-cloud@latest/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions#functions
           # echo ${{toJSON(fromJSON(env.str3))}}
           # echo ${{toJSON(fromJSON(env.str2))}}
-          echo "${{ toJSON(fromJSON(env.str3)) }}"
-          echo "----------"
-          echo "${{ fromJSON(env.str3) }}"
+          # echo "${{ toJSON(fromJSON(env.str3)) }}"
+          # echo "${{ fromJSON(env.str3) }}"
 
       - name: s3
         run: | 
@@ -40,6 +40,9 @@ jobs:
           echo ${{fromJSON(env.str2).*.name}}
           echo ${{fromJSON(env.str2)[0]}}
           echo ${{fromJSON(env.str2)[0].name}}
+          echo ${{fromJSON(env.str2)[1].name}}
+          echo ${{fromJSON(env.str2)[2].name}}
+          echo ${{fromJSON(env.str2)[2].name == null}}
 
       - name: try to access undefined property
         run: |  
@@ -52,7 +55,7 @@ jobs:
           echo ${{fromJSON(env.str2).*.xxx}}
 
           echo "----------"
-          # 以下都得到貞烈
+          # 以下都得到陣列
           echo ${{fromJSON(env.str2).*.xxx[0]}}
           echo ${{fromJSON(env.str2).*.xxx[0][0][0][0][0][0][0][0][0][0][0][0]}}
           # 得到false
