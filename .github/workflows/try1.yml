@@ -45,7 +45,11 @@ jobs:
           echo ${{fromJSON(env.str1).xxx}}
           # 得到陣列
           echo ${{fromJSON(env.str2).*.xxx}}
+          echo "----------"
           echo ${{fromJSON(env.str2).*.xxx[0]}}
+          echo ${{fromJSON(env.str2).*.xxx[0][0]}}
+          echo ${{fromJSON(env.str2).*.xxx[0][0][0]}}
+          echo ${{fromJSON(env.str2).*.xxx[0][0][0][0]}}
           echo "----------"
           echo ${{fromJSON(env.str2).*.xxx == '[]'}}
           echo ${{fromJSON(env.str2).*.xxx != '[]'}}
