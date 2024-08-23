@@ -84,4 +84,7 @@ jobs:
           echo ${{fromJSON(env.arrStr).*}}
           echo ${{fromJSON(env.arrStr)[0]}}
           echo ${{fromJSON(env.arrStr2).*}}          
-          echo ${{fromJSON(env.arrStr2)[0]}}          
+          echo ${{fromJSON(env.arrStr2)[0]}} 
+          echo "----------"
+          echo ${{fromJSON(env.arrStr).*[0]}}         
+          echo ${{fromJSON(env.arrStr2).*[0]}}         
