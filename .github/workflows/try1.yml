@@ -9,6 +9,8 @@ env:
   str1: "{\"name\":\"Tempura\", \"jobs\":{\"fullTime\":\"frontend developer\", \"partTime\":\"no\"}, \"favorites\":[\"tempura ninja\"]}"
   str2: '[{"name":"Tempura"}, {"name":"Ninja"}]'
   str3: "{\"name\":\"Tempura\"}"
+  arrStr: "['1', '2']"
+  arrStr2: "[\"3\", \"4\"]"
 
 jobs:
   discover_yarn_workspaces:
@@ -32,7 +34,7 @@ jobs:
           # echo "${{ toJSON(fromJSON(env.str3)) }}"
           # echo "${{ fromJSON(env.str3) }}"
 
-      - name: s3
+      - name: test JSON function with object and array of object
         run: | 
           echo ${{fromJSON(env.str1).name}}
           echo ${{fromJSON(env.str1).jobs}}
@@ -67,11 +69,19 @@ jobs:
           echo ${{fromJSON(env.str2).*.xxx != '[]'}}
           echo ${{fromJSON(env.str2).*.xxx == '[undefined, undefined]'}}
 
-      - name: try to find out length
+      # - name: try to find out length
+      #   run: |
+      #     # https://github.com/orgs/community/discussions/27125
+      #     # https://stackoverflow.com/questions/68032967/check-for-element-in-an-array-in-github-action-script
+      #     echo "array=("element1" "element2" "element3")" >> $GITHUB_ENV
+      #     # 得到0
+      #     echo ${#array[@]}
+
+      - name: test JSON function with array
         run: |
-          # https://github.com/orgs/community/discussions/27125
-          # https://stackoverflow.com/questions/68032967/check-for-element-in-an-array-in-github-action-script
-          echo "array=("element1" "element2" "element3")" >> $GITHUB_ENV
-          echo ${#array[@]}
-          echo ${$array[@]}
-          echo ${{env.array}}
+          echo ${{fromJSON(env.arrStr)}}
+          echo ${{fromJSON(env.arrStr2)}}
+          echo ${{fromJSON(env.arrStr).*}}
+          echo ${{fromJSON(env.arrStr)[0]}}
+          echo ${{fromJSON(env.arrStr2).*}}          
+          echo ${{fromJSON(env.arrStr2)[0]}}          
