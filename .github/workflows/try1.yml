@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - master
-  
+  workflow_dispatch:
+    
+
 env:
   str1: "{\"name\":\"Tempura\", \"jobs\":{\"fullTime\":\"frontend developer\", \"partTime\":\"no\"}, \"favorites\":[\"tempura ninja\"]}"
   str2: '[{"name":"Tempura"}, {"name":"Ninja"}]'
