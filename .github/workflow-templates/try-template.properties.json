@@ -4,10 +4,5 @@
   "iconName": "kanahei's small animal",
   "categories": [
       "Pages"
-  ],
-  "filePatterns": [
-      "package.json$",
-      "^Dockerfile",
-      ".*\\.md$"
   ]
 }
