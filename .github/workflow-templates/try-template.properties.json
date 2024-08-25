@@ -1,0 +1,13 @@
+{
+  "name": "Try workflow template",
+  "description": "This is first trial template for workflow",
+  "iconName": "kanahei's small animal",
+  "categories": [
+      "Go"
+  ],
+  "filePatterns": [
+      "package.json$",
+      "^Dockerfile",
+      ".*\\.md$"
+  ]
+}

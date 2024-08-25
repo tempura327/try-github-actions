@@ -1,0 +1,19 @@
+name: Try workflow template
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Give a try
+        run: echo "Try to use workflow template"
+
+# https://docs.github.com/en/actions/writing-workflows/using-workflow-templates
