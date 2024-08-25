@@ -3,6 +3,7 @@
   "description": "This is first trial template for workflow",
   "iconName": "kanahei's small animal",
   "categories": [
-      "Pages"
+      "Pages",
+      "JavaScript"
   ]
 }
