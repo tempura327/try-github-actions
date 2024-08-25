@@ -3,7 +3,7 @@
   "description": "This is first trial template for workflow",
   "iconName": "kanahei's small animal",
   "categories": [
-      "Go"
+      "Pages"
   ],
   "filePatterns": [
       "package.json$",
