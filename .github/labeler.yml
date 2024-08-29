@@ -1,7 +1,7 @@
-Fix Bug:
+bug:
   - base-branch: ['main']
-  - head-branch: ['^fix/\w+']
+  - head-branch: ['^fix/[a-zA-Z_-]+']
 
-Documentation:
+documentation:
 - changed-files:
-  - any-glob-to-any-file: '*.md'
+  - any-glob-to-any-file: ['*.md','**/*.md']
