@@ -1,0 +1,7 @@
+Fix Bug:
+  - base-branch: ['main']
+  - head-branch: ['^fix/\w+']
+
+Documentation:
+- changed-files:
+  - any-glob-to-any-file: '*.md'
