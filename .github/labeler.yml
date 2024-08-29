@@ -1,6 +1,6 @@
 Fix Bug:
   - base-branch: ['main']
-  - head-branch: ['^fix/\w+']
+  - head-branch: ['^fix/[a-zA-Z_-]+']
 
 Documentation:
 - changed-files:
