@@ -16,4 +16,4 @@ jobs:
     steps:
       - name: greeting
         run: |
-          echo How's it going with your new workflow?
+          echo How\'s it going with your new workflow?
