@@ -6,12 +6,15 @@ on:
       name:
         required: true
         type: string
+    outputs: # 一定要定義outputs，才能讓caller取用
+      reply: 
+        value: ${{ jobs.first_job_of_reusable_workflow.outputs.output1 }}
 
 jobs:
   first_job_of_reusable_workflow:
     runs-on: ubuntu-latest
     outputs: # 一定要定義outputs，才能讓caller取用
-      reply: ${{ steps.answer-question.outputs.ANSWER }}
+      output1: ${{ steps.answer-question.outputs.ANSWER }}
     steps:
       - name: say hello
         run: |
