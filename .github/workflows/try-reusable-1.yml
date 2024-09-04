@@ -10,7 +10,14 @@ on:
 jobs:
   first_job_of_reusable_workflow:
     runs-on: ubuntu-latest
+    outputs: # 一定要定義outputs，才能讓caller取用
+      reply: ${{ steps.answer-question.outputs.ANSWER }}
     steps:
       - name: say hello
         run: |
           echo Hello ${{ inputs.name }}
+
+      - name: answer question from caller
+        id: answer-question
+        run: | 
+          echo "ANSWER=It\'s great." >> $GITHUB_OUTPUT
