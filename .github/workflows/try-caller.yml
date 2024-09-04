@@ -17,4 +17,4 @@ jobs:
       - name: greeting
         run: |
           echo How\'s it going with your new workflow?
-          echo ${{ needs.call_reusable_workflow_1.outputs.ANSWER }}
+          echo ${{ needs.call_reusable_workflow_1.outputs.reply }}
