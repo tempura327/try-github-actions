@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
+      # - uses: actions/checkout@v4
       - run: |
           echo How\'s it going with your new workflow?
           echo ${{ steps.trial.outputs.reply }}
         shell: bash
 
       - id: trial
-        uses: tempura327/try-github-actions/.github/action.yml
+        uses: tempura327/try-github-actions@v1.0.0
         with:
           name: 'Jasmine'
       
