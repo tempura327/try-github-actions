@@ -22,5 +22,5 @@ runs:
     - name: Reply question
       id: reply-your-friend
       run: |
-        echo "output1=Amazing! I can composite several steps into a action." >> $GITHUB_OUTPUT
+        echo "output1=Amazing! I can use <owner>/<repo name>@<tag> to refer my composite action." >> $GITHUB_OUTPUT
       shell: bash
