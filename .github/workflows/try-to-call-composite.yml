@@ -1,0 +1,20 @@
+name: Try to use composite action
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  call_composite_action_1:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - id: trial
+        uses: tempura327/try-github-actions@v1.0.0
+        with:
+          name: 'Jasmine'
+      - run: |
+          echo How\'s it going with your new workflow?
+          echo ${{ steps.trial.outputs.reply }}
+        shell: bash
