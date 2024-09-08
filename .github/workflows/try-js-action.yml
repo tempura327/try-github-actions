@@ -15,7 +15,8 @@ jobs:
         with:
           node-version: '20'
       - run: |
-          npm i
+          npm install
+          npm list
 
 
   call_js_action_1:
