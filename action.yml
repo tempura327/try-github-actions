@@ -8,6 +8,8 @@ inputs:
 outputs:
   reply:
     description: 'This a description'
+    value: 'xxxx'
+    
 runs:
   # 不要想用這種方式安裝package，steps和main無法共存
   # steps:
