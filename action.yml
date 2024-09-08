@@ -7,7 +7,11 @@ inputs:
     default: 'Somebody'
 outputs:
   reply:
+    value: ${{ steps.use-node-to-run.outputs.reply }}
 
 runs:
-  using: 'node20'
-  main: 'index.js'
+  steps:
+    - name: use node20 to run action
+      id: use-node-to-run
+      using: 'node20'
+      main: 'index.js'
