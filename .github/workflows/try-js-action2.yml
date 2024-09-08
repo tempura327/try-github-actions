@@ -1,0 +1,29 @@
+name: Try JS action2
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  try:
+    runs-on: ubuntu-latest
+    steps:
+      # clone repo才讀得到package.json
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install
+          npm list
+
+      - id: trial
+        uses: tempura327/try-github-actions@master
+        with:
+          name: 'Tempura Ninja'
+      
+      - run: |
+          echo How\'s it going with your new workflow?
+          echo ${{ steps.trial.outputs.reply }}
+        shell: bash
