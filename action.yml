@@ -6,7 +6,7 @@ inputs:
     required: true
     default: 'Somebody'
 outputs:
-  reply:
+  output1:
     description: 'This a description'
     value: 'xxxx'
     
