@@ -11,4 +11,4 @@ outputs:
 
 runs:
   using: 'node20'
-  main: 'index.js'
+  main: '.github/actions/js-actions/index.js'
