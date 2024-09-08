@@ -9,7 +9,7 @@ jobs:
   try:
     runs-on: ubuntu-latest
     steps:
-      - id: print somethig
+      - id: print-somethig
         run: |
           echo "Good morning."
 
