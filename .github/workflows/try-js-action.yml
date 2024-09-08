@@ -19,7 +19,7 @@ jobs:
     steps:
       - id: trial
         # uses: tempura327/try-github-actions@v1.0.5
-        uses: tempura327/try-github-actions/.github/actions/index.js@master
+        uses: tempura327/try-github-actions/action.yml@master
         with:
           name: 'Tempura Ninja'
       
