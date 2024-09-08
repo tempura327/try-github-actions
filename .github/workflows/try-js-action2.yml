@@ -19,7 +19,7 @@ jobs:
           npm list
 
       - id: trial
-        uses: tempura327/try-github-actions@master
+        uses: tempura327/try-github-actions@v1.0.6
         with:
           name: 'Tempura Ninja'
       
