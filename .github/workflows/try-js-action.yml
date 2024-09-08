@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: trial
-        uses: tempura327/try-github-actions@v1.0.4
+        uses: tempura327/try-github-actions@v1.0.5
         with:
           name: 'Tempura Ninja'
       
