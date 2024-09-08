@@ -27,7 +27,7 @@ jobs:
         # with:
         #   name: 'Tempura Ninja'
         run: |
-          node .github/actions/js-actions/index.js
+          node ./.github/actions/js-actions/index.js
       
       - run: |
           echo How\'s it going with your new workflow?
