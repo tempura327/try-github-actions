@@ -29,7 +29,7 @@ jobs:
         run: |
           cd ../
           ls
-          node .github/actions/js-actions/index.js
+          node main.js
       
       - run: |
           echo How\'s it going with your new workflow?
