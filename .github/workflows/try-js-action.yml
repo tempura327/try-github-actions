@@ -9,9 +9,11 @@ jobs:
   try:
     runs-on: ubuntu-latest
     steps:
-      - id: print-somethig
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
         run: |
-          echo "Good morning."
+          npm i
 
 
   call_js_action_1:
