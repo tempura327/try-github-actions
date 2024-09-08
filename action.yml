@@ -18,6 +18,7 @@ runs:
     - run: |
         npm install
         npm list
+      shell: bash
         
   using: 'node20'
-  main: './main.js'
+  # main: './main.js'
