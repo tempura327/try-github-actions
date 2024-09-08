@@ -10,15 +10,15 @@ outputs:
     value: "aaa"
 
 runs:
-  steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-    - run: |
-        npm install
-        npm list
-      shell: bash
+  # steps:
+  #   - uses: actions/checkout@v4
+  #   - uses: actions/setup-node@v4
+  #     with:
+  #       node-version: '20'
+  #   - run: |
+  #       npm install
+  #       npm list
+  #     shell: bash
         
   using: 'node20'
-  # main: './main.js'
+  main: 'dist/index.js'
