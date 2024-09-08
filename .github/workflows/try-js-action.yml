@@ -27,6 +27,8 @@ jobs:
           cd ../try-github-actions
           ls
           node main.js
+        with:
+          name: 'Tempura Ninja'
       
       - run: |
           echo How\'s it going with your new workflow?
