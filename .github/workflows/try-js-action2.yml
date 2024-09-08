@@ -19,11 +19,11 @@ jobs:
           npm list
 
       - id: trial
-        uses: tempura327/try-github-actions@v1.0.7
+        uses: tempura327/try-github-actions@v1.0.8
         with:
           name: 'Tempura Ninja'
       
       - run: |
           echo How\'s it going with your new workflow?
-          echo ${{ steps.trial.outputs.reply }}
+          echo ${{ steps.trial.outputs.output1 }}
         shell: bash
