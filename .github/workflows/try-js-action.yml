@@ -18,19 +18,17 @@ jobs:
           npm install
           npm list
 
-      # - id: trial
+      - id: trial
         # uses: tempura327/try-github-actions@master
         # with:
         #   name: 'Tempura Ninja'
-      - run: |
+        runs: |
           node -v
           cd ../try-github-actions
           ls
           node main.js
-        with:
-          name: 'Tempura Ninja'
       
       - run: |
           echo How\'s it going with your new workflow?
-          # echo ${{ steps.trial.outputs.reply }}
+          echo ${{ steps.trial.outputs.reply }}
         shell: bash
