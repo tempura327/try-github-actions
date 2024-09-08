@@ -1,26 +1,13 @@
-name: 'Say Hello'
-description: 'Today is a perfect day to day hello to everyone'
+name: 'Say hello'
+description: 'Greet someone'
 inputs:
   name:
-    description: 'user name'
+    description: "Someone's name"
     required: true
-  
+    default: 'Somebody'
 outputs:
   reply:
-    description: "How's it going with your new workflow"
-    value: ${{ steps.reply-your-friend.outputs.output1 }}
 
 runs:
-  using: 'composite'
-  steps:
-    - name: greeting
-      run: echo "Hello $INPUT_WHO_TO_GREET."
-      shell: bash
-      env:
-        INPUT_WHO_TO_GREET: ${{ inputs.name }}
-
-    - name: Reply question
-      id: reply-your-friend
-      run: |
-        echo "output1=Amazing! I can composite several steps into a action." >> $GITHUB_OUTPUT
-      shell: bash
+  using: 'node20'
+  main: 'index.js'

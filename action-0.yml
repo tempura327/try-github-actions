@@ -1,0 +1,26 @@
+name: 'Say Hello'
+description: 'Today is a perfect day to day hello to everyone'
+inputs:
+  name:
+    description: 'user name'
+    required: true
+  
+outputs:
+  reply:
+    description: "How's it going with your new workflow"
+    value: ${{ steps.reply-your-friend.outputs.output1 }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: greeting
+      run: echo "Hello $INPUT_WHO_TO_GREET."
+      shell: bash
+      env:
+        INPUT_WHO_TO_GREET: ${{ inputs.name }}
+
+    - name: Reply question
+      id: reply-your-friend
+      run: |
+        echo "output1=Amazing! I can composite several steps into a action." >> $GITHUB_OUTPUT
+      shell: bash
