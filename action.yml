@@ -10,6 +10,5 @@ outputs:
     value: "aaa"
 
 runs:
-  id: use-node-to-run
   using: 'node20'
   main: 'index.js'
