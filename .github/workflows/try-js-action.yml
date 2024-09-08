@@ -22,16 +22,16 @@ jobs:
   call_js_action_1:
     runs-on: ubuntu-latest
     steps:
-      - id: trial
+      # - id: trial
         # uses: tempura327/try-github-actions@master
         # with:
         #   name: 'Tempura Ninja'
-        run: |
-          cd ../
-          ls
-          node main.js
+        # run: |
+        #   cd ../
+        #   ls
+        #   node main.js
       
       - run: |
           echo How\'s it going with your new workflow?
-          echo ${{ steps.trial.outputs.reply }}
+          # echo ${{ steps.trial.outputs.reply }}
         shell: bash
