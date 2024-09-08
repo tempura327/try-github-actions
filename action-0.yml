@@ -24,3 +24,5 @@ runs:
       run: |
         echo "output1=Amazing! I can composite several steps into a action." >> $GITHUB_OUTPUT
       shell: bash
+
+# action的metadata file一定要叫做action.yml，為了測試JS action暫時把這個檔案先改名
