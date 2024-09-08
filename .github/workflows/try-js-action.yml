@@ -28,6 +28,7 @@ jobs:
         #   name: 'Tempura Ninja'
         run: |
           cd ../
+          cd ls
           node .github/actions/js-actions/index.js
       
       - run: |
