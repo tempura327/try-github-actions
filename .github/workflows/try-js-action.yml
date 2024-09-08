@@ -22,7 +22,7 @@ jobs:
         # uses: tempura327/try-github-actions@master
         # with:
         #   name: 'Tempura Ninja'
-        runs: |
+        run: |
           node -v
           cd ../try-github-actions
           ls
