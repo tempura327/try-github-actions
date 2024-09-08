@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 try {
   const nameToGreet = core.getInput('name');
-  console.log(`Hello ${nameToGreet}!. How's it going with your new workflow?`);
+  console.log(`Hello ${nameToGreet}!`);
 
   // 透過github context可以取得觸發workflow的相關資訊
   const repoName = github.context.payload.repository;
