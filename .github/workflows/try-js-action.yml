@@ -23,10 +23,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: trial
-        # uses: tempura327/try-github-actions@v1.0.5
-        uses: tempura327/try-github-actions@master
-        with:
-          name: 'Tempura Ninja'
+        # uses: tempura327/try-github-actions@master
+        # with:
+        #   name: 'Tempura Ninja'
+        run: |
+          node .github/actions/js-actions/index.js
       
       - run: |
           echo How\'s it going with your new workflow?
