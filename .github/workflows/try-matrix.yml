@@ -1,0 +1,17 @@
+name: Try
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  greet-to-someone:
+    strategy:
+      matrix:
+        greeting: ['Have you ever', 'Will you']
+        action: ['go to ', 'live in']
+        country: ['Japan', 'Canada', 'Taiwan']
+    steps:
+      - name: Greet
+        run: echo "${{ matrix.greeting }} ${{ matrix.action }} ${{ matrix.country }}?"    
