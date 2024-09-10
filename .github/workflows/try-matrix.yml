@@ -63,4 +63,4 @@ jobs:
 
     steps:
       - name: trial1
-        run: echo ${{matrix.fruit}} ${{matrix.animal}}
+        run: echo ${{matrix.fruit}} ${{matrix.animal}} ${{matrix.color}} ${{matrix.shape}}
