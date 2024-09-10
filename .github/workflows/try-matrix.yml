@@ -27,7 +27,6 @@ jobs:
           - decoration: edible cake flowers
           - fruit: raspberry
             sauce: caramel sauce
-          
     steps:
       - name: Prepare for a fancy cake
         run: echo "${{ matrix.fruit }} ${{ matrix.base }} with ${{matrix.extra.decoration}}"
