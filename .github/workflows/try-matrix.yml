@@ -1,4 +1,4 @@
-name: Try
+name: Try matrix
 
 on:
   push:
@@ -6,13 +6,28 @@ on:
       - master
 
 jobs:
-  greet-to-someone:
+  # greet-to-someone:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix:
+  #       greeting: ['Have you ever', 'Will you']
+  #       action: ['go to ', 'live in']
+  #       country: ['Japan', 'Canada', 'Taiwan']
+  #   steps:
+  #     - name: Greet
+  #       run: echo "${{ matrix.greeting }} ${{ matrix.action }} ${{ matrix.country }}?"    
+
+  prepare-for-dessert:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        greeting: ['Have you ever', 'Will you']
-        action: ['go to ', 'live in']
-        country: ['Japan', 'Canada', 'Taiwan']
+        fruit: ['mango', 'strawberry', 'blue berry']
+        base: ['vanilla cake', 'chocolate fudge cake']
+        extra:
+          - decoration: edible cake flowers
+          - fruit: raspberry
+            sauce: caramel sauce
+          
     steps:
-      - name: Greet
-        run: echo "${{ matrix.greeting }} ${{ matrix.action }} ${{ matrix.country }}?"    
+      - name: Prepare for a fancy cake
+        run: echo "${{ matrix.fruit }} ${{ matrix.base }} with ${{matrix.extra.decoration}}"
