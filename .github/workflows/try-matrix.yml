@@ -60,7 +60,7 @@ jobs:
           - fruit: banana
           - fruit: banana
             animal: cat
-            
+
     steps:
       - name: trial1
-        run: echo ${{toJSON(matrix)}}
+        run: echo ${{matrix.fruit}} ${{matrix.animal}}
