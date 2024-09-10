@@ -23,10 +23,10 @@ jobs:
       matrix:
         fruit: ['mango', 'strawberry', 'blue berry']
         base: ['vanilla cake', 'chocolate fudge cake']
-        extra:
+        include:
           - decoration: edible cake flowers
           - fruit: raspberry
             sauce: caramel sauce
     steps:
       - name: Prepare for a fancy cake
-        run: echo "${{ matrix.fruit }} ${{ matrix.base }} with ${{matrix.extra.decoration}}"
+        run: echo "${{ matrix.fruit }} ${{ matrix.base }} with ${{toJSON(matrix.include)}}"
