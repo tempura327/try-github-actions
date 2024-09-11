@@ -63,3 +63,21 @@ jobs:
     steps:
       - name: ready
         run: echo "${{ matrix.fruit }} ${{ matrix.dessert }} ${{ matrix.decoration }} ${{ matrix.size }}"
+
+  prepare-dessert2:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fruit: [mango, strawberry, raspberry]
+        dessert: ['ice cream', cake]
+        sauce: ['chocolate', 'strawberry']
+        exclude:
+          - fruit: mango
+            dessert: cake
+            sauce: strawberry
+          - fruit: raspberry
+            dessert: 'ice cream'
+         
+    steps:
+      - name: ready
+        run: echo "${{ matrix.fruit }} ${{ matrix.dessert }} ${{ matrix.sauce }}"
