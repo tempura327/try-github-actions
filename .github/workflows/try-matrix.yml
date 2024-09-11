@@ -45,22 +45,21 @@ jobs:
     #     - name: Greet
     #       run: echo "${{ matrix.greeting }} ${{ matrix.action }} ${{ matrix.country }}?"
 
-  trial:
+  prepare-dessert:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        fruit: [apple, pear]
-        animal: [cat, dog]
+        fruit: [mango, strawberry]
+        dessert: ['ice cream', cake]
         include:
-          - color: green
-          - color: pink
-            animal: cat
-          - fruit: apple
-            shape: circle
-          - fruit: banana
-          - fruit: banana
-            animal: cat
-
+          - size: small
+          - size: large
+            dessert: 'ice cream'
+          - fruit: mango
+            decoration: chocolate
+          - fruit: raspberry
+          - fruit: raspberry
+            dessert: 'ice cream'
     steps:
-      - name: trial1
-        run: echo ${{matrix.fruit}} ${{matrix.animal}} ${{matrix.color}} ${{matrix.shape}}
+      - name: ready
+        run: echo "${{ matrix.fruit }} ${{ matrix.dessert }} ${{ matrix.decoration }} ${{ matrix.size }}"
