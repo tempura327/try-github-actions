@@ -9,14 +9,14 @@ jobs:
   try:
     runs-on: ubuntu-latest
     steps:
-      # clone repo才讀得到package.json
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: |
-          npm install
-          npm list
+      # # clone repo才讀得到package.json
+      # - uses: actions/checkout@v4
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
+      # - run: |
+      #     npm install
+      #     npm list
 
       - id: trial
         uses: tempura327/try-github-actions@v1.0.8
