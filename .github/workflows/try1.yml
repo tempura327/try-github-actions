@@ -36,6 +36,7 @@ jobs:
       - name: s2
         run: | 
           echo answer is ${{ steps.say-hello.outputs.ANSWER }}
+          echo answer is $ANSWER2
           # echo reply is $reply2
 
   # discover_yarn_workspaces:
