@@ -34,8 +34,8 @@ jobs:
           echo reply2=$(node tools/index.js --name Tempura) >> $GITHUB_ENV
       - name: s2
         run: | 
-          echo reply is ${{ steps.say-hello.outputs.reply }}
-          echo replys is $reply2
+          echo answer is ${{ steps.say-hello.outputs.ANSWER }}
+          echo reply is $reply2
 
   # discover_yarn_workspaces:
   #   name: Discover yarn workspaces
