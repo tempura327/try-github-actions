@@ -6,11 +6,11 @@ function main(){
 
   const userName = argv.name;
 
-  console.log(`Hello ${userName}. How's it going with your new workflow?`);
+  // console.log(`Hello ${userName}. How's it going with your new workflow?`);
 
-  console.log('It\'s good. I\'m try to run JS file in it.');
+  // console.log('It\'s good. I\'m try to run JS file in it.');
 
-  return 'this is return value';
+  return `Hello ${userName}. This is my return value`;
 }
 
 export default main();
