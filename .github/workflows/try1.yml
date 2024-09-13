@@ -15,78 +15,90 @@ env:
   arrStr2: "[\"3\", \"4\"]"
 
 jobs:
-  discover_yarn_workspaces:
-    name: Discover yarn workspaces
+  run_js_file:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    outputs: 
+      reply: ${{ steps.say-hello.outputs.reply }}
+
     steps:
       - name: s1
-        run: | 
-          echo ${{fromJSON(env.str1)}}
-          echo ${{fromJSON(env.str2)}}
-          echo ${{fromJSON(env.str3)}}
+        id: say-hello
+        run: npm run talkToTempura
+      - name: s2
+        run: echo ${{ steps.say-hello.outputs.reply }}
 
-      # - name: s2
-        # run: | 
-          # toJSON處理物件、陣列會報錯 "line 2: name:: command not found"
-          # https://docs.github.com/en/enterprise-cloud@latest/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions#functions
-          # echo ${{toJSON(fromJSON(env.str3))}}
-          # echo ${{toJSON(fromJSON(env.str2))}}
-          # echo "${{ toJSON(fromJSON(env.str3)) }}"
-          # echo "${{ fromJSON(env.str3) }}"
+  # discover_yarn_workspaces:
+  #   name: Discover yarn workspaces
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     matrix: ${{ steps.set-matrix.outputs.matrix }}
+  #   steps:
+  #     - name: s1
+  #       run: | 
+  #         echo ${{fromJSON(env.str1)}}
+  #         echo ${{fromJSON(env.str2)}}
+  #         echo ${{fromJSON(env.str3)}}
 
-      - name: test JSON function with object and array of object
-        run: | 
-          echo ${{fromJSON(env.str1).name}}
-          echo ${{fromJSON(env.str1).jobs}}
-          echo ${{fromJSON(env.str1).favorites}}
-          echo ${{fromJSON(env.str2).*.name}}
-          echo ${{fromJSON(env.str2)[0]}}
-          echo ${{fromJSON(env.str2)[0].name}}
-          echo ${{fromJSON(env.str2)[1].name}}
-          echo ${{fromJSON(env.str2)[2].name}}
-          # 得到true
-          echo ${{fromJSON(env.str2)[2].name == null}}
+  #     # - name: s2
+  #       # run: | 
+  #         # toJSON處理物件、陣列會報錯 "line 2: name:: command not found"
+  #         # https://docs.github.com/en/enterprise-cloud@latest/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions#functions
+  #         # echo ${{toJSON(fromJSON(env.str3))}}
+  #         # echo ${{toJSON(fromJSON(env.str2))}}
+  #         # echo "${{ toJSON(fromJSON(env.str3)) }}"
+  #         # echo "${{ fromJSON(env.str3) }}"
 
-      - name: try to access undefined property
-        run: |  
-          # 以下屬性一定不存在
-          # 得到null
-          echo ${{fromJSON(env.str1).xxx}}
-          # 得到true
-          echo ${{fromJSON(env.str1).xxx == null}}
-          # 得到陣列
-          echo ${{fromJSON(env.str2).*.xxx}}
+  #     - name: test JSON function with object and array of object
+  #       run: | 
+  #         echo ${{fromJSON(env.str1).name}}
+  #         echo ${{fromJSON(env.str1).jobs}}
+  #         echo ${{fromJSON(env.str1).favorites}}
+  #         echo ${{fromJSON(env.str2).*.name}}
+  #         echo ${{fromJSON(env.str2)[0]}}
+  #         echo ${{fromJSON(env.str2)[0].name}}
+  #         echo ${{fromJSON(env.str2)[1].name}}
+  #         echo ${{fromJSON(env.str2)[2].name}}
+  #         # 得到true
+  #         echo ${{fromJSON(env.str2)[2].name == null}}
 
-          echo "----------"
-          # 以下都得到陣列
-          echo ${{fromJSON(env.str2).*.xxx[0]}}
-          echo ${{fromJSON(env.str2).*.xxx[0][0][0][0][0][0][0][0][0][0][0][0]}}
-          # 得到false
-          echo ${{fromJSON(env.str2).*.xxx[0] == null}}
-          echo "----------"
-          # 得到false, true, false
-          echo ${{fromJSON(env.str2).*.xxx == '[]'}}
-          echo ${{fromJSON(env.str2).*.xxx != '[]'}}
-          echo ${{fromJSON(env.str2).*.xxx == '[undefined, undefined]'}}
+  #     - name: try to access undefined property
+  #       run: |  
+  #         # 以下屬性一定不存在
+  #         # 得到null
+  #         echo ${{fromJSON(env.str1).xxx}}
+  #         # 得到true
+  #         echo ${{fromJSON(env.str1).xxx == null}}
+  #         # 得到陣列
+  #         echo ${{fromJSON(env.str2).*.xxx}}
 
-      # - name: try to find out length
-      #   run: |
-      #     # https://github.com/orgs/community/discussions/27125
-      #     # https://stackoverflow.com/questions/68032967/check-for-element-in-an-array-in-github-action-script
-      #     echo "array=("element1" "element2" "element3")" >> $GITHUB_ENV
-      #     # 得到0
-      #     echo ${#array[@]}
+  #         echo "----------"
+  #         # 以下都得到陣列
+  #         echo ${{fromJSON(env.str2).*.xxx[0]}}
+  #         echo ${{fromJSON(env.str2).*.xxx[0][0][0][0][0][0][0][0][0][0][0][0]}}
+  #         # 得到false
+  #         echo ${{fromJSON(env.str2).*.xxx[0] == null}}
+  #         echo "----------"
+  #         # 得到false, true, false
+  #         echo ${{fromJSON(env.str2).*.xxx == '[]'}}
+  #         echo ${{fromJSON(env.str2).*.xxx != '[]'}}
+  #         echo ${{fromJSON(env.str2).*.xxx == '[undefined, undefined]'}}
 
-      - name: test JSON function with array
-        run: |
-          echo ${{fromJSON(env.arrStr)}}
-          echo ${{fromJSON(env.arrStr2)}}
-          echo ${{fromJSON(env.arrStr).*}}
-          echo ${{fromJSON(env.arrStr)[0]}}
-          echo ${{fromJSON(env.arrStr2).*}}          
-          echo ${{fromJSON(env.arrStr2)[0]}} 
-          echo "----------"
-          echo ${{fromJSON(env.arrStr).*[0]}}         
-          echo ${{fromJSON(env.arrStr2).*[0]}}         
+  #     # - name: try to find out length
+  #     #   run: |
+  #     #     # https://github.com/orgs/community/discussions/27125
+  #     #     # https://stackoverflow.com/questions/68032967/check-for-element-in-an-array-in-github-action-script
+  #     #     echo "array=("element1" "element2" "element3")" >> $GITHUB_ENV
+  #     #     # 得到0
+  #     #     echo ${#array[@]}
+
+  #     - name: test JSON function with array
+  #       run: |
+  #         echo ${{fromJSON(env.arrStr)}}
+  #         echo ${{fromJSON(env.arrStr2)}}
+  #         echo ${{fromJSON(env.arrStr).*}}
+  #         echo ${{fromJSON(env.arrStr)[0]}}
+  #         echo ${{fromJSON(env.arrStr2).*}}          
+  #         echo ${{fromJSON(env.arrStr2)[0]}} 
+  #         echo "----------"
+  #         echo ${{fromJSON(env.arrStr).*[0]}}         
+  #         echo ${{fromJSON(env.arrStr2).*[0]}}         
