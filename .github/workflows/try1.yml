@@ -30,9 +30,12 @@ jobs:
           npm list
       - name: s1
         id: say-hello
-        run: npm run talkToTempura
+        run: |
+          echo reply2=$(npm run talkToTempura) >> $GITHUB_ENV
       - name: s2
-        run: echo ${{ steps.say-hello.outputs.reply }}
+        run: | 
+          echo ${{ steps.say-hello.outputs.reply }}
+          echo $reply2
 
   # discover_yarn_workspaces:
   #   name: Discover yarn workspaces
