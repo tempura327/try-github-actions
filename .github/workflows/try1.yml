@@ -31,11 +31,12 @@ jobs:
       - name: s1
         id: say-hello
         run: |
-          echo reply2=$(node tools/index.js --name Tempura) >> $GITHUB_ENV
+          echo node tools/index.js --name Tempura
+          # echo reply2=$(node tools/index.js --name Tempura) >> $GITHUB_ENV
       - name: s2
         run: | 
           echo answer is ${{ steps.say-hello.outputs.ANSWER }}
-          echo reply is $reply2
+          # echo reply is $reply2
 
   # discover_yarn_workspaces:
   #   name: Discover yarn workspaces
