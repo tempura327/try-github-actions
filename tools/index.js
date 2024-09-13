@@ -1,11 +1,16 @@
 import minimist from 'minimist';
 
-const argv = minimist(process.argv.slice(2));
 
-const userName = argv.name;
+function main(){
+  const argv = minimist(process.argv.slice(2));
 
-console.log(`Hello ${userName}. How's it going with your new workflow?`);
+  const userName = argv.name;
 
-console.log('It\'s good. I\'m try to run JS file in it.');
+  console.log(`Hello ${userName}. How's it going with your new workflow?`);
 
-return 'this is return value';
+  console.log('It\'s good. I\'m try to run JS file in it.');
+
+  return 'this is return value';
+}
+
+export default main();
