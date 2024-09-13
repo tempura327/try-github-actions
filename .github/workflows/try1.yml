@@ -31,7 +31,7 @@ jobs:
       - name: s1
         id: say-hello
         run: |
-          echo reply2=$(npm run talkToTempura) >> $GITHUB_ENV
+          echo reply2=$(node ../../tools.index.js) >> $GITHUB_ENV
       - name: s2
         run: | 
           echo reply is ${{ steps.say-hello.outputs.reply }}
