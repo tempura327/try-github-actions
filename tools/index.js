@@ -10,6 +10,8 @@ function main(){
 
   // console.log('It\'s good. I\'m try to run JS file in it.');
 
+  console.log(`ANSWER=Hello ${userName}. This is my answer." >> $GITHUB_OUTPUT`)
+
   return `Hello ${userName}. This is my return value`;
 }
 
