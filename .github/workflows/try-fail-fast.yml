@@ -37,6 +37,7 @@ jobs:
 
   prepare-dessert:
     runs-on: ubuntu-latest
+    continue-on-error: false
     strategy:
       fail-fast: true
       matrix:
@@ -57,3 +58,5 @@ jobs:
         run: |
           echo "Throw error on purpose" 
           exit 1
+      - name: print something
+        run: echo ${{ matrix.fruit}} ${{ matrix.dessert}} 
