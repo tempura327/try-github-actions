@@ -60,6 +60,8 @@ jobs:
 
   next-job:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
     steps:
       - name: print something
         run: |
