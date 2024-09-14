@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     # continue-on-error: false
     strategy:
-      fail-fast: true
+      # fail-fast: true
       matrix:
         fruit: [mango, strawberry]
         dessert: ['ice cream', cake]
