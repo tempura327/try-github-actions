@@ -21,9 +21,6 @@ jobs:
   #           dessert: 'ice cream'
   #         - fruit: mango
   #           decoration: chocolate
-  #         - fruit: raspberry
-  #         - fruit: raspberry
-  #           dessert: 'ice cream'
   #   steps:
   #     - name: throw error
   #       if: ${{ matrix.fruit == 'mango'}}
