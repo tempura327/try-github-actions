@@ -26,7 +26,7 @@ jobs:
             dessert: 'ice cream'
     steps:
       - name: throw error
-        if: ${{ matrix.fruit == 'mango' &&  matrix.dessert == 'ice cream'}}
+        if: ${{ matrix.fruit == 'mango'}}
         run: |
           echo "Using exit 1 to test if this can stop next job" 
           exit 1
