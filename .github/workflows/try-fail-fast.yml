@@ -1,0 +1,36 @@
+name: Try fail fast
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  prepare-dessert:
+    runs-on: ubuntu-latest
+    # 為了避免無限迴圈，所以job不能依賴自己
+    # needs: prepare-dessert
+    # if: ${{ needs.prepare-dessert.outputs.result == 'success' }} 
+    strategy:
+      matrix:
+        fruit: [mango, strawberry]
+        dessert: ['ice cream', cake]
+        include:
+          - size: small
+          - size: large
+            dessert: 'ice cream'
+          - fruit: mango
+            decoration: chocolate
+          - fruit: raspberry
+          - fruit: raspberry
+            dessert: 'ice cream'
+    steps:
+      - name: throw error
+        if: ${{ matrix.fruit == 'mango' &&  matrix.dessert == 'ice cream'}}
+        run: |
+          echo "Using exit 1 to test if this can stop next job" 
+          exit 1
+      - name: The first step of a matrix job
+        if: ${{ success() }}
+        run: |
+          echo "${{ matrix.fruit }} ${{ matrix.dessert }} ${{ matrix.decoration }} ${{ matrix.size }}"
