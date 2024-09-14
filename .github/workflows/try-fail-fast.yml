@@ -65,7 +65,7 @@ jobs:
       - name: throw error
         run: |
           echo "Throw error on purpose" 
-          exit 0
+          exit 1
       - name: after throw error
         run: |
           echo "This is after throw error"
