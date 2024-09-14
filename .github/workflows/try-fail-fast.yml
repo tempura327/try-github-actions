@@ -60,10 +60,7 @@ jobs:
 
   next-job:
     runs-on: ubuntu-latest
-    continue-on-error: true
-    # needs: prepare-dessert
-    # strategy:
-    #   fail-fast: true
+    # continue-on-error: true
     steps:
       - name: throw error
         run: |
