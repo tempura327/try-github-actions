@@ -53,7 +53,7 @@ jobs:
             dessert: 'ice cream'
     steps:
       - name: throw error
-        if: ${{ matrix.fruit == 'mango'}}
+        if: ${{ matrix.fruit != 'mango'}}
         run: |
           echo "Throw error on purpose" 
           exit 1
