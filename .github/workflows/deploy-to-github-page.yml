@@ -19,7 +19,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: github-pages22
       url: https://tempura327.github.io/try-github-actions/
     permissions:
       pages: write
