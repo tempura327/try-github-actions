@@ -3,7 +3,7 @@ name: Deploy to github page
 on:
   push:
     tags:        
-      - \d.\d.\d(.\d)?
+      - trial@\d.\d.\d(.\d)?
   workflow_dispatch:
 
 jobs:
