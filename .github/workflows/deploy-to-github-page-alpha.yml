@@ -26,7 +26,7 @@ jobs:
     needs: build
     environment:
       name: github-pages-${{github.ref_name }}
-      url: https://${{ github.repository_owner }}.github.io/try-github-actions/
+      url: https://${{ github.repository_owner }}.github.io/try-github-actions-${{github.ref_name }}/
     permissions:
       pages: write
       id-token: write
