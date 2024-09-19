@@ -1,0 +1,36 @@
+name: Deploy to github page alpha
+
+on:
+  push:
+    branches:        
+      - alpha
+      - beta
+      # default branch，或者是用來prod發版的分支
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # build完後得到的資料夾，或者裝html、js的資料夾
+          path: ./src
+      - name: print
+        run: echo build step is completed, ready to build to alpha
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages-alpha
+      url: https://tempura327.github.io/try-github-actions/
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
