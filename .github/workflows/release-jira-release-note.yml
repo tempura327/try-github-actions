@@ -3,8 +3,8 @@ on:
   workflow_run:
     workflows:
       - 'Deploy to github page'
-  #   types:
-  #     - completed
+    types:
+      - completed
 
 jobs:
   update-jira-release-note:
