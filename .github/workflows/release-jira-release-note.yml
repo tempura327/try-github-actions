@@ -1,0 +1,34 @@
+name: Release Jira release note
+on:
+  workflow_run:
+    workflows:
+      - 'Deploy to github page'
+    types:
+      - completed
+
+jobs:
+  update-jira-release-note:
+    runs-on: ubuntu-latest
+    steps:
+      - id: get-id-of-release-version
+        # TODO: 修改指向為相對路徑
+        uses: tempura327/try-github-actions/.github/workflows/actions/get-jira-project-version@master
+        with:
+          jiraDomain: ${{secrets.JIRA_DOMAIN}}
+          jiraToken: ${{secrets.JIRA_TOKEN}}
+          projectKey: TGA
+          versionName: ${{github.ref_name}}
+
+      - name: print version
+        run: |
+          echo $versionName
+          echo $versionId
+
+      - id: update-jira-release-note
+        # TODO:修改指向為相對路徑
+        uses: ../actions/update-release-note
+        with:
+          jiraDomain: ${{secrets.JIRA_DOMAIN}}
+          jiraToken: ${{secrets.JIRA_TOKEN}}
+          versionId: ${{steps.get-id-of-release-version.outputs.versionId}}
+          projectId: 10001
