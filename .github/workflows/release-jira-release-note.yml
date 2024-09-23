@@ -10,8 +10,7 @@ jobs:
   update-jira-release-note:
     runs-on: ubuntu-latest
     steps:
-      - id: get-id-of-release-version
-        uses: tempura327/try-github-actions/.github/workflows/actions/get-jira-project-version@master
+      - uses: tempura327/try-github-actions/.github/workflows/actions/get-jira-project-version@master
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
@@ -23,8 +22,7 @@ jobs:
           echo $versionName
           echo $versionId
 
-      - id: update-jira-release-note
-        uses: ../actions/update-release-note
+      -  uses: ../actions/update-release-note
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
