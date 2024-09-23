@@ -10,13 +10,16 @@ const projectId = core.getInput('projectId');
 const jiraToken = core.getInput('jiraToken');
 const jiraDomain = core.getInput('jiraDomain');
 
+// https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-project-versions/#api-rest-api-3-version-id-put
 const bodyData = `{
   "archived": true,
   "id": "${versionId}",
-  "projectId": ${projectId},
+  "projectId": "${projectId}",
   "releaseDate": "${releaseDate}",
   "released": true,
 }`;
+
+console.log(bodyData)
 
 await fetch(`https://${jiraDomain}.atlassian.net/rest/api/3/version/${versionId}`, {
   method: 'PUT',
