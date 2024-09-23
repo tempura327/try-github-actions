@@ -5,7 +5,8 @@ import core from '@actions/core';
 const jiraDomain = core.getInput('jiraDomain');
 const jiraToken = core.getInput('jiraToken');
 const projectKey = core.getInput('projectKey');
-const versionName = core.getInput('versionName');
+// const versionName = core.getInput('versionName');
+const versionName = 'trial@1.0.2';
 
 const getAllVersions = async () => {
   await fetch(`https://${jiraDomain}.atlassian.net/rest/api/3/project/${projectKey}/versions`, {
