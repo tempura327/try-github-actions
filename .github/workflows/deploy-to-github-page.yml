@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: github-pages22
+      name: github-pages
       url: https://tempura327.github.io/try-github-actions/
     permissions:
       pages: write
