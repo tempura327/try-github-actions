@@ -1,8 +1,8 @@
 name: Release Jira release note
 on:
   workflow_run:
-  #   workflows:
-  #     - 'Deploy to github page'
+    workflows:
+      - 'Deploy to github page'
   #   types:
   #     - completed
 
