@@ -12,9 +12,11 @@ jobs:
     steps:
       - name: get id of release version
         # uses: tempura327/try-github-actions/.github/workflows/actions/get-jira-project-version@master
+        # 不會被當作path
         # uses: ../actions/get-jira-project-version
         # 這樣會跑到/home/runner/work/try-github-actions/try-github-actions/.github/actions/get-jira-project-version
         # uses: ./.github/actions/get-jira-project-version
+
         uses: ./../github/actions/get-jira-project-version
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
@@ -28,7 +30,7 @@ jobs:
           echo $versionId
 
       - name: update jira release note
-        uses: ./.github/actions/update-release-note
+        uses: ./../.github/actions/update-release-note
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
