@@ -16,7 +16,6 @@ const bodyData = `{
   "projectId": ${projectId},
   "releaseDate": "${releaseDate}",
   "released": true,
-  "userReleaseDate": "${releaseDate}"
 }`;
 
 await fetch(`https://${jiraDomain}.atlassian.net/rest/api/3/version/${versionId}`, {

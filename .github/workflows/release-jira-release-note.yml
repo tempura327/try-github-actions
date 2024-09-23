@@ -40,7 +40,6 @@ jobs:
 
       - name: print version
         run: |
-          echo $versionName
           echo ${{steps.get_version.outputs.versionId}}
 
       - name: update jira release note
