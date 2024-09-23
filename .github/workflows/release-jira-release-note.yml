@@ -15,34 +15,28 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: |
-          npm install
-          npm list
       - name: print files
         run: |
           cd ./.github/actions/get-jira-project-version
           ls
-      - name: get id of release version
-        # uses: tempura327/try-github-actions/.github/actions/get-jira-project-version@master
-        # 不會被當作path
-        # uses: ../actions/get-jira-project-version
-        # 這樣會跑到/home/runner/work/try-github-actions/try-github-actions/.github/actions/get-jira-project-version
-        # uses: ./.github/actions/get-jira-project-version
+      # - name: get id of release version
+      #   # uses: tempura327/try-github-actions/.github/actions/get-jira-project-version@master
+      #   # 不會被當作path
+      #   # uses: ../actions/get-jira-project-version
+      #   # 這樣會跑到/home/runner/work/try-github-actions/try-github-actions/.github/actions/get-jira-project-version
+      #   # uses: ./.github/actions/get-jira-project-version
 
-        uses: ./../.github/actions/get-jira-project-version
-        with:
-          jiraDomain: ${{secrets.JIRA_DOMAIN}}
-          jiraToken: ${{secrets.JIRA_TOKEN}}
-          projectKey: TGA
-          versionName: ${{github.ref_name}}
+      #   uses: ./../.github/actions/get-jira-project-version
+      #   with:
+      #     jiraDomain: ${{secrets.JIRA_DOMAIN}}
+      #     jiraToken: ${{secrets.JIRA_TOKEN}}
+      #     projectKey: TGA
+      #     versionName: ${{github.ref_name}}
 
-      - name: print version
-        run: |
-          echo $versionName
-          echo $versionId
+      # - name: print version
+      #   run: |
+      #     echo $versionName
+      #     echo $versionId
 
       - name: update jira release note
         uses: ./../.github/actions/update-release-note
