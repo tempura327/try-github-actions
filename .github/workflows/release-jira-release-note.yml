@@ -1,13 +1,13 @@
 name: Release Jira release note
 on:
-  # workflow_run:
-  #   workflows:
-  #     - 'Deploy to github page'
-  #   types:
-  #     - completed
-  push:
-    branches:
-      - master
+  workflow_run:
+    workflows:
+      - 'Deploy to github page'
+    types:
+      - completed
+  # push:
+  #   branches:
+  #     - master
 
 jobs:
   update-jira-release-note:
