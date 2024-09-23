@@ -16,7 +16,7 @@ const bodyData = `{
   "id": "${versionId}",
   "projectId": "${projectId}",
   "releaseDate": "${releaseDate}",
-  "released": true,
+  "released": true
 }`;
 
 console.log(bodyData)
