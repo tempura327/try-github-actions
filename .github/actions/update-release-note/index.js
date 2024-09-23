@@ -1,5 +1,7 @@
-const fetch = require('node-fetch');
-const core = require('@actions/core');
+// const fetch = require('node-fetch');
+// const core = require('@actions/core');
+import core from '@actions/core';
+import fetch from 'node-fetch';
 
 const today = new Date();
 const releaseDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
