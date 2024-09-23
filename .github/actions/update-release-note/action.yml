@@ -1,0 +1,14 @@
+name: Update Jira release note
+inputs:
+  jiraDomain:
+    required: true
+  jiraToken:
+    required: true
+  versionId:
+    required: true
+  projectId:
+    required: true
+
+runs:
+  using: node20
+  main: './index.js'
