@@ -15,6 +15,12 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm install
+          npm list
       - name: print files
         run: |
           cd ./.github/actions/get-jira-project-version
