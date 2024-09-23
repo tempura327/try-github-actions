@@ -22,7 +22,7 @@ const getAllVersions = async () => {
 
       const res = response.text();
 
-      core.setOutput('', res.find(({name}) => name === versionName));
+      core.setOutput('versionId', res.find(({name}) => name === versionName)?.id);
     })
     .then(text => console.log(text))
     .catch(err => console.error(err));
