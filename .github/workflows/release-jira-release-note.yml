@@ -23,6 +23,7 @@ jobs:
           npm list
         shell: bash
       - name: get id of release version
+        id: get_version
         # uses: tempura327/try-github-actions/.github/actions/get-jira-project-version@master
         # 不會被當作path
         # uses: ../actions/get-jira-project-version
@@ -40,12 +41,12 @@ jobs:
       - name: print version
         run: |
           echo $versionName
-          echo $versionId
+          echo ${{steps.get_version.outputs.versionId}}
 
       - name: update jira release note
         uses: ./.github/actions/update-release-note
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
-          versionId: ${{steps.get-id-of-release-version.outputs.versionId}}
+          versionId:  ${{steps.get_version.outputs.versionId}}
           projectId: 10001
