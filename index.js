@@ -22,13 +22,12 @@ const getAllVersions = async () => {
         `Response: ${response.status} ${response.statusText}`
       );
 
-      const res = response.json();
-
-      console.log(res, 'res');
-
-      core.setOutput('versionId', res.find(({name}) => name === versionName)?.id);
+      return response.json();
     })
-    .then(text => console.log(text))
+    .then((text) => {
+      console.log(text)
+      core.setOutput('versionId', text.find(({name}) => name === versionName)?.id);
+    })
     .catch(err => console.error(err));
 }
 
