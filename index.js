@@ -1,4 +1,5 @@
-const core = require('@actions/core');
+// const core = require('@actions/core');
+import core from '@actions/core';
 
 const jiraDomain = core.getInput('jiraDomain');
 const jiraToken = core.getInput('jiraToken');
