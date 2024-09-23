@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get id of release version
-        uses: tempura327/try-github-actions/.github/workflows/actions/get-jira-project-version@master
+        # uses: tempura327/try-github-actions/.github/workflows/actions/get-jira-project-version@master
+        uses: ../actions/get-jira-project-version
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
