@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
       - name: print files
         run: |
-          cd ./../.github/actions/get-jira-project-version
+          cd home/runner/work/try-github-actions/.github/actions/get-jira-project-version
           ls
       - name: get id of release version
         # uses: tempura327/try-github-actions/.github/workflows/actions/get-jira-project-version@master
