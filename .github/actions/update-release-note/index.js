@@ -1,7 +1,6 @@
 // const fetch = require('node-fetch');
 // const core = require('@actions/core');
 import core from '@actions/core';
-import fetch from 'node-fetch';
 
 const today = new Date();
 const releaseDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
@@ -20,7 +19,7 @@ const bodyData = `{
   "userReleaseDate": "${releaseDate}"
 }`;
 
-fetch(`https://${jiraDomain}.atlassian.net/rest/api/3/version/${versionId}`, {
+await fetch(`https://${jiraDomain}.atlassian.net/rest/api/3/version/${versionId}`, {
   method: 'PUT',
   headers: {
     'Authorization': `Basic ${Buffer.from(
