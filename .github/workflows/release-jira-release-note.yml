@@ -13,7 +13,9 @@ jobs:
       - name: get id of release version
         # uses: tempura327/try-github-actions/.github/workflows/actions/get-jira-project-version@master
         # uses: ../actions/get-jira-project-version
-        uses: ./.github/actions/get-jira-project-version
+        # 這樣會跑到/home/runner/work/try-github-actions/try-github-actions/.github/actions/get-jira-project-version
+        # uses: ./.github/actions/get-jira-project-version
+        uses: ../.github/actions/get-jira-project-version
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
