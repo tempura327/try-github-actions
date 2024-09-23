@@ -1,3 +1,4 @@
+// ReferenceError: require is not defined in ES module scope, you can use import instead
 // const core = require('@actions/core');
 import core from '@actions/core';
 
@@ -21,7 +22,9 @@ const getAllVersions = async () => {
         `Response: ${response.status} ${response.statusText}`
       );
 
-      const res = response.text();
+      const res = response.json();
+
+      console.log(res, 'res');
 
       core.setOutput('versionId', res.find(({name}) => name === versionName)?.id);
     })
