@@ -12,6 +12,7 @@ on:
 jobs:
   update-jira-release-note:
     runs-on: ubuntu-latest
+    if: ${{startsWith(github.ref_name, 'trial@')}}
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
