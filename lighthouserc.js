@@ -15,7 +15,10 @@ module.exports = {
 
       // 使用指令npx lhci wizard，在本地run local server
       target: 'lhci',
-      serverBaseUrl:'http://localhost:9001',
+      // serverBaseUrl:'http://localhost:9001',
+      // local server遇到 ERROR: request to http://localhost:9001/v1/projects/lookup failed LHCI server not reachable
+      // 所以先借用別人的heroku server
+      serverBaseUrl:'https://lhci-canary.herokuapp.com/',
       token: '8dd0012c-4703-492b-ab0d-f6dabf2991f4'
     },
     // settings: {
