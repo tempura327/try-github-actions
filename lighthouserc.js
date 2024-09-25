@@ -4,7 +4,9 @@ module.exports = {
       staticDistDir: './src',
     },
     upload: {
-      target: 'temporary-public-storage',
+      // target: 'temporary-public-storage',
+      target: 'https://tempura327.github.io/try-github-actions/',
+      
     },
     // settings: {
     //   configPath: './lighthouse-config.js',
