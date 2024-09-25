@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '20'
       - run: |
-          npm i lighthouse
+          npm i -g lighthouse
         shell: bash
       - name: run lighthouse
         run: |
