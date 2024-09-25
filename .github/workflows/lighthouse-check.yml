@@ -25,19 +25,29 @@ jobs:
       #   run: |
       #     lighthouse https://try-github-actions-git-master-tempura327s-projects.vercel.app/
 
-      # lighthouse-ci
+      # lighthouse
       - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
-      # 如果是SSG，就不需要build，所以要把這個step移除
-      - name: install packages
-        run: |
-          npm i
-      - name: run Lighthouse CI
-        run: |
-          npm install
-          npm install -g @lhci/cli@0.14.0
-          lhci autorun --collect.staticDistDir="./src" --collect.settings.chromeFlags="--no-sandbox" --upload.target=temporary-public-storage --assert.preset="lighthouse:recommended" || echo "LHCI failed!"
-        
+      - run: npm install && npm install -g @lhci/cli@0.14.0
+      - run: npm run build
+      - run: lhci autorun
+
+
+      # lighthouse-ci
+      # 失敗Error [ERR_REQUIRE_ESM]: require() of ES Module /home/runner/work/try-github-actions/try-github-actions/lighthouserc.js from /opt/hostedtoolcache/node/18.20.4/x64/lib/node_modules/@lhci/cli/node_modules/@lhci/utils/src/lighthouserc.js not supported.
+      # - uses: actions/checkout@v4
+      # - name: Use Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 18
+      # - name: install packages
+      #   run: |
+      #     npm i
+      # - name: run Lighthouse CI
+      #   run: |
+      #     npm install
+      #     npm install -g @lhci/cli@0.14.0
+      #     lhci autorun --collect.staticDistDir="./src" --collect.settings.chromeFlags="--no-sandbox" --upload.target=temporary-public-storage --assert.preset="lighthouse:recommended" || echo "LHCI failed!"
+      
