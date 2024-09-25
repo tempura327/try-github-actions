@@ -27,7 +27,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
       # 如果是SSG，就不需要build，所以要把這個step移除
       - name: install packages
         run: |
