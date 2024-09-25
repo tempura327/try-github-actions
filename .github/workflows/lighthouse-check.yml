@@ -5,7 +5,7 @@ on:
   #     - 'Deploy to github page'
   #   types:
   #     - completed
-  # workflow_dispatch:
+  workflow_dispatch:
   push:
     branches:
       - master
