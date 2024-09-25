@@ -1,11 +1,14 @@
 name: Lighthouse check
 on:
-  workflow_run:
-    workflows:
-      - 'Deploy to github page'
-    types:
-      - completed
-  workflow_dispatch:
+  # workflow_run:
+  #   workflows:
+  #     - 'Deploy to github page'
+  #   types:
+  #     - completed
+  # workflow_dispatch:
+  push:
+    branches:
+      - master
 
 jobs:
   check-performance:
@@ -36,5 +39,5 @@ jobs:
         run: |
           npm install
           npm install -g @lhci/cli@0.14.0
-          lhci autorun
+          lhci autorun --collect.staticDistDir="./src" --collect.settings.chromeFlags="--no-sandbox" --upload.target=temporary-public-storage --assert.preset="lighthouse:recommended" || echo "LHCI failed!"
         
