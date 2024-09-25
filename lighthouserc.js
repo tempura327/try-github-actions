@@ -1,7 +1,7 @@
-export default {
+module.exports = {
   ci: {
     collect: {
-      staticDistDir: './src/index.html',
+      staticDistDir: './src',
     },
     upload: {
       target: 'temporary-public-storage',
