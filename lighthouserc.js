@@ -5,9 +5,9 @@ module.exports = {
     },
     upload: {
       // Choices of target: "lhci", "temporary-public-storage", "filesystem"
-      // target: 'lhci',
+      target: 'lhci',
 
-      target: 'temporary-public-storage',
+      // target: 'temporary-public-storage',
       serverBaseUrl: 'https://tempura327.github.io/try-github-actions/'
     },
     // settings: {
