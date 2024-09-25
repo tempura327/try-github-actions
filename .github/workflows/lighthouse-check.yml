@@ -11,15 +11,29 @@ jobs:
   check-performance:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
+      # lighthouse要跑瀏覽器，會失敗
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 20
+      # - run: |
+      #     npm i -g lighthouse
+      #   shell: bash
+      # - name: run lighthouse
+      #   run: |
+      #     lighthouse https://try-github-actions-git-master-tempura327s-projects.vercel.app/
+
+      # lighthouse-ci
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - run: |
-          npm i -g lighthouse
-        shell: bash
-      - name: run lighthouse
+          node-version: 20
+      # 如果是SSG，就不需要build，所以要把這個step移除
+      - name: install packages
         run: |
-          lighthouse https://try-github-actions-7j5j9eopu-tempura327s-projects.vercel.app/ --view
-
-
+          npm i
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.14.0
+          lhci autorun
         
