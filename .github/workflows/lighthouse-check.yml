@@ -1,0 +1,25 @@
+name: Lighthouse check
+on:
+  workflow_run:
+    workflows:
+      - 'Deploy to github page'
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  check-performance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
+          npm i lighthouse
+        shell: bash
+      - name: run lighthouse
+        run: |
+          lighthouse https://try-github-actions-7j5j9eopu-tempura327s-projects.vercel.app/ --view
+
+
+        
