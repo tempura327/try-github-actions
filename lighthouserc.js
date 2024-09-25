@@ -5,10 +5,18 @@ module.exports = {
     },
     upload: {
       // Choices of target: "lhci", "temporary-public-storage", "filesystem"
-      target: 'lhci',
+
+      // https://github.com/GoogleChrome/lighthouse-ci/issues/144
+      // 沒有用AWS、GCP之類的Lighthouse CI server的話target 只能用'temporary-public-storage'，serverBaseUrl也要移除
+      // https://github.com/GoogleChrome/lighthouse-ci/blob/main/docs/getting-started.md#configuration
+      // 有用的話除了用'lhci'，記得要提供server的token
 
       // target: 'temporary-public-storage',
-      serverBaseUrl: 'https://tempura327.github.io/try-github-actions/'
+
+      // 使用指令npx lhci wizard，在本地run local server
+      target: 'lhci',
+      serverBaseUrl:'http://localhost:9001',
+      token: '8dd0012c-4703-492b-ab0d-f6dabf2991f4'
     },
     // settings: {
     //   configPath: './lighthouse-config.js',
