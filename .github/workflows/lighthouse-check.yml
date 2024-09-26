@@ -1,4 +1,4 @@
-name: CI
+name: Lighthouse check
 on:
   # workflow_run:
   #   workflows:
@@ -6,6 +6,7 @@ on:
   #   types:
   #     - completed
   workflow_dispatch:
+  # 一定要有push，不然status check UI不會出現
   push:
     # branches:
       # - master
