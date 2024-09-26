@@ -1,0 +1,44 @@
+name: Send a release message
+# 以下例子是當deploy的workflow執行完後發通知
+# 大家可以自行視情況修改觸發時機
+on:
+  workflow_run:
+    workflows:
+      - 'Deploy to github page'
+    types:
+      - completed
+
+jobs:
+  send-message:
+    name: send message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          # 如果想要一次傳到多個頻道，就用,把channe id隔開
+          channel-id: 'C07PKF2NNHX'
+          # 想傳給人的話則使用user-id
+          payload: |
+            {
+              "text": "New Version 🚀",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "New version is deployed."
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "For more details, please refer to release note."
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
