@@ -6,9 +6,9 @@ on:
   #   types:
   #     - completed
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - master
+  push:
+    # branches:
+      # - master
   pull_request:
 
 
