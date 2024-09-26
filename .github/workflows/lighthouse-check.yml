@@ -1,4 +1,4 @@
-name: Lighthouse check
+name: CI
 on:
   # workflow_run:
   #   workflows:
@@ -7,8 +7,8 @@ on:
   #     - completed
   workflow_dispatch:
   push:
-    branches:
-      - master
+    # branches:
+      # - master
   pull_request:
 
 
