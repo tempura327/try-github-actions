@@ -66,6 +66,6 @@ jobs:
       # 錯誤
       # JIRA_TOKEN: ${{github.env.jiraToken}}
       # JIRA_TOKEN: $jiraToken
-      JIRA_TOKEN: ${{env.foo}}
-      JIRA_DOMAIN: ${{env.jiraDomain}}
+      JIRA_TOKEN: ${{github.env.foo}}
+      JIRA_DOMAIN: github.env.jiraDomain
    
