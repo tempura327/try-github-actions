@@ -41,7 +41,7 @@ jobs:
   update-release-note:
     runs-on: ubuntu-latest
     steps: 
-      - uses: ./.github/actions/release-jira-release-note
+      - uses: ./../.github/actions/release-jira-release-note
         with:
           version: ${{github.ref_name}}
     
