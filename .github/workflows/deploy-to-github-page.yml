@@ -14,6 +14,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs: # 一定要定義outputs，才能讓caller取用
+      bar: ${{ steps.print.outputs.bar }}
     steps:
       - uses: actions/checkout@v4
       - name: Extract version
@@ -24,7 +26,8 @@ jobs:
         with:
           path: ./src
           name: github-pages
-      - name: print
+      - name: 
+        id: print
         run: |
           echo ref_name: ${{github.ref_name}}
           echo build step is completed
