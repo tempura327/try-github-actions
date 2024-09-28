@@ -43,10 +43,10 @@ jobs:
     steps: 
     # 先clone repo才能用composite action
       - uses: actions/checkout@v4
-      - name: print
-        run: |
-          cd ./.github/actions/
-          ls
+      # - name: print
+      #   run: |
+      #     cd ./.github/actions/
+      #     ls
       - uses: ./.github/actions/release-jira-release-note
         with:
           version: ${{github.ref_name}}
