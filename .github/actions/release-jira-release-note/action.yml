@@ -38,7 +38,7 @@ runs:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
           projectKey: TGA
-          versionName: ${{ inputs.name }}
+          versionName: ${{ inputs.version }}
           # versionName: $versionName
 
       - name: print version

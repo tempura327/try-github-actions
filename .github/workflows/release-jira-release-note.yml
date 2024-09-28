@@ -2,7 +2,7 @@ name: Release Jira release note
 on:
   workflow_call:
     inputs:
-      vesion:
+      version:
         required: true
         type: string
   # workflow_run:
@@ -39,6 +39,7 @@ jobs:
         run: |
           cat ./src/version.txt
           echo "versionName=$(cat ./src/version.txt)" >> $GITHUB_ENV
+          echo ${{inputs.version}}
 
       - name: get id of release version
         id: get_version
@@ -54,7 +55,7 @@ jobs:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
           projectKey: TGA
-          versionName: $versionName
+          versionName: ${{inputs.version}}
 
       - name: print version
         run: |
