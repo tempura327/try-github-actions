@@ -28,6 +28,7 @@ jobs:
         run: |
           echo ref_name: ${{github.ref_name}}
           echo build step is completed
+          echo bar=${{ secrets.JIRA_DOMAIN }} >> $GITHUB_OUTPUT
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,6 +49,7 @@ jobs:
           echo ${{github.env.jiraDomain}}
 
   update-release-note:
+    needs: build
     # steps: 
     # 先clone repo才能用composite action
       # - uses: actions/checkout@v4
@@ -66,7 +68,11 @@ jobs:
       # 錯誤
       # JIRA_TOKEN: ${{github.env.jiraToken}}
       # JIRA_TOKEN: $jiraToken
-      JIRA_TOKEN: ${{github.env.foo}}
-      JIRA_DOMAIN: github.env.jiraDomain
+      JIRA_TOKEN: ${{github.job.build.outputs.bar}}
+      JIRA_DOMAIN:  ${{github.job.build.outputs.bar}}
       foo: 'abcdefg'
+    # env: 
+    #   jiraToken: ${{ secrets.JIRA_TOKEN }}
+    #   jiraDomain: ${{ secrets.JIRA_DOMAIN }}
+    #   foo: 'this is foo'
    
