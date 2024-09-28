@@ -43,7 +43,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       - name: print
-        run: 
+        run: |
           echo $jiraDomain
           echo ${{github.env.jiraDomain}}
 
