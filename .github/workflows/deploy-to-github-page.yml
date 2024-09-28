@@ -17,8 +17,8 @@ jobs:
           path: ./src
       - name: print
         run: |
+          echo ref_name: ${{github.ref_name}}
           echo build step is completed
-          echo ${{github.ref_name}}
 
   deploy:
     runs-on: ubuntu-latest
