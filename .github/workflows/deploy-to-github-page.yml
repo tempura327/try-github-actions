@@ -45,9 +45,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: print
         run: |
-          ls
           cd ./.github/actions/
           ls
-      - uses: ./../.github/actions/release-jira-release-note
+      - uses: ./.github/actions//release-jira-release-note
         with:
           version: ${{github.ref_name}}
