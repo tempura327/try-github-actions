@@ -55,7 +55,7 @@ jobs:
       # - uses: ./.github/actions/release-jira-release-note
       #   with:
       #     version: ${{github.ref_name}}
-      
+
     # reusable workflow
     uses: tempura327/try-github-actions/.github/workflows/release-jira-release-note.yml@master
     with:
@@ -66,6 +66,6 @@ jobs:
       # 錯誤
       # JIRA_TOKEN: ${{github.env.jiraToken}}
       # JIRA_TOKEN: $jiraToken
-      JIRA_TOKEN: ${{github.env.foo}}
-      JIRA_DOMAIN: env.jiraDomain
+      JIRA_TOKEN: ${{env.foo}}
+      JIRA_DOMAIN: ${{env.jiraDomain}}
    
