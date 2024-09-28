@@ -11,6 +11,8 @@ on:
       JIRA_TOKEN:
         required: true
         type: string
+      foo: 
+        type: string
   # workflow_run:
   #   workflows:
   #     - 'Deploy to github page'
@@ -41,12 +43,9 @@ jobs:
         with:
           name: github-pages
       
-      # - name: read versionData file
-      #   run: |
-      #     ls
-      #     # cat ./src/version.txt
-      #     # echo "versionName=$(cat ./src/version.txt)" >> $GITHUB_ENV
-      #     echo ${{inputs.version}}
+      - name: print
+        run: |
+          echo ${{inputs.foo}}
 
       - name: get id of release version
         id: get_version
