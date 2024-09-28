@@ -52,5 +52,5 @@ jobs:
     with:
       version: ${{github.ref_name}}
       JIRA_DOMAIN: ${{ github.secrets.LHCI_GITHUB_APP_TOKEN }}
-      JIRA_TOKEN: ${{secrets.JIRA_TOKEN}}
+      JIRA_TOKEN: ${{github.secrets.JIRA_TOKEN}}
    
