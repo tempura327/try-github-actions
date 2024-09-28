@@ -29,10 +29,12 @@ jobs:
       - name: 
         id: print
         run: |
-          echo ref_name: ${{github.ref_name}}
+          # echo ref_name: ${{github.ref_name}}
           echo build step is completed
           # echo "bar=$JIRA_DOMAIN || 'zzz'" >> $GITHUB_OUTPUT
           echo "bar=${{env.jiraDomain || 'zzz'}}" >> $GITHUB_OUTPUT
+          echo ${{env.jiraDomain}}
+          echo $bar
 
   deploy:
     runs-on: ubuntu-latest
