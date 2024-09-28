@@ -46,6 +46,8 @@ jobs:
       - name: print
         run: |
           echo ${{inputs.foo}}
+          echo ${{inputs.JIRA_DOMAIN}}
+          echo ${{inputs.JIRA_TOKEN}}
 
       - name: get id of release version
         id: get_version
