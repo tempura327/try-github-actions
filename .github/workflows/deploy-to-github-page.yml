@@ -6,6 +6,10 @@ on:
       - 'trial@\d.\d.\d'
   workflow_dispatch:
 
+env: 
+  jiraToken: ${{ secrets.JIRA_TOKEN }}
+  jiraDomain: ${{ secrets.JIRA_DOMAIN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,7 +43,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   update-release-note:
-    # runs-on: ubuntu-latest
+ 
     # steps: 
     # 先clone repo才能用composite action
       # - uses: actions/checkout@v4
@@ -51,6 +55,9 @@ jobs:
     uses: tempura327/try-github-actions/.github/workflows/release-jira-release-note.yml@master
     with:
       version: ${{github.ref_name}}
-      JIRA_DOMAIN: ${{ github.secrets.LHCI_GITHUB_APP_TOKEN }}
-      JIRA_TOKEN: ${{github.secrets.JIRA_TOKEN}}
+      # 不要直接取用secret，會取不到secret
+      # JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+      # JIRA_DOMAIN: ${{ secrets.JIRA_DOMAIN }}
+      JIRA_TOKEN: $jiraToken
+      JIRA_DOMAIN: $jiraDomain
    
