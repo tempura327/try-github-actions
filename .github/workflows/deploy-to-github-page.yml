@@ -54,32 +54,68 @@ jobs:
           echo $jiraDomain
           echo ${{github.env.jiraDomain}}
 
-# JIRA_DOMAIN、傳不進去，失敗
-  update-release-note:
-    needs: build
-    # steps: 
-    # 先clone repo才能用composite action
-      # - uses: actions/checkout@v4
-      # composite action，記得要有index.js
-      # - uses: ./.github/actions/release-jira-release-note
-      #   with:
-      #     version: ${{github.ref_name}}
+  # JIRA_DOMAIN、傳不進去，失敗
+  # update-release-note:
+  #   needs: build
+  #   # steps: 
+  #   # 先clone repo才能用composite action
+  #     # - uses: actions/checkout@v4
+  #     # composite action，記得要有index.js
+  #     # - uses: ./.github/actions/release-jira-release-note
+  #     #   with:
+  #     #     version: ${{github.ref_name}}
 
-    # reusable workflow
-    uses: tempura327/try-github-actions/.github/workflows/release-jira-release-note.yml@master
-    with:
-      version: ${{github.ref_name}}
-      # 不要直接取用secret，會取不到secret
-      # JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
-      # JIRA_DOMAIN: ${{ secrets.JIRA_DOMAIN }}
-      # 錯誤
-      # JIRA_TOKEN: ${{github.env.jiraToken}}
-      # JIRA_TOKEN: $jiraToken
-      JIRA_TOKEN: ${{needs.build.outputs.bar}}
-      JIRA_DOMAIN:  ${{needs.build.outputs.bar}}
-      foo: 'abcdefg'
-    # env: 
-    #   jiraToken: ${{ secrets.JIRA_TOKEN }}
-    #   jiraDomain: ${{ secrets.JIRA_DOMAIN }}
-    #   foo: 'this is foo'
-  
+  #   # reusable workflow
+  #   uses: tempura327/try-github-actions/.github/workflows/release-jira-release-note.yml@master
+  #   with:
+  #     version: ${{github.ref_name}}
+  #     # 不要直接取用secret，會取不到secret
+  #     # JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+  #     # JIRA_DOMAIN: ${{ secrets.JIRA_DOMAIN }}
+  #     # 錯誤
+  #     # JIRA_TOKEN: ${{github.env.jiraToken}}
+  #     # JIRA_TOKEN: $jiraToken
+  #     JIRA_TOKEN: ${{needs.build.outputs.bar}}
+  #     JIRA_DOMAIN:  ${{needs.build.outputs.bar}}
+  #     foo: 'abcdefg'
+  #   # env: 
+  #   #   jiraToken: ${{ secrets.JIRA_TOKEN }}
+  #   #   jiraDomain: ${{ secrets.JIRA_DOMAIN }}
+  #   #   foo: 'this is foo'
+
+  update-jira-release-note:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Check out repo
+      #   uses: actions/checkout@v4
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20'
+      # - run: |
+      #     npm install
+      #     npm list
+      #   shell: bash
+
+      - name: get id of release version
+        id: get_version
+        uses: ./.github/actions/get-jira-project-version
+        with:
+          jiraDomain: ${{secrets.JIRA_DOMAIN}}
+          jiraToken: ${{secrets.JIRA_TOKEN}}
+          projectKey: TGA
+          versionName: ${{github.ref_name}}
+
+      - name: print version
+        run: |
+          echo ${{steps.get_version.outputs.versionId}}
+          # 改以前是分支名
+          # 改成reusable workflow後會是trial@...
+          echo ${{github.ref_name}}
+
+      - name: update jira release note
+        uses: ./.github/actions/update-release-note
+        with:
+          jiraDomain: ${{secrets.JIRA_DOMAIN}}
+          jiraToken: ${{secrets.JIRA_TOKEN}}
+          versionId:  ${{steps.get_version.outputs.versionId}}
+          projectId: 10001
