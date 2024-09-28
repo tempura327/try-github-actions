@@ -1,21 +1,15 @@
 name: Release Jira release note
-on:
-  workflow_run:
-    workflows:
-      - 'Deploy to github page'
-    types:
-      - completed
+description: 'Update jira release note after a new version is depolyed'
+inputs:
+  version:
+    description: 'tag name of version'
+    required: true
+ 
 
-  # push:
-  #   branches:
-  #     - master
-
-jobs:
-  update-jira-release-note:
-    runs-on: ubuntu-latest
-    # if: ${{startsWith(github.ref_name, 'trial@')}}
-    steps:
-      - name: Check out repo
+runs:
+  using: 'composite'
+  steps:
+    - name: Check out repo
         uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -34,22 +28,18 @@ jobs:
         run: |
           cat ./src/version.txt
           echo "versionName=$(cat ./src/version.txt)" >> $GITHUB_ENV
+          # 試試看versionName和input.version是否相同
+          echo $verionName
 
       - name: get id of release version
         id: get_version
-        # uses: tempura327/try-github-actions/.github/actions/get-jira-project-version@master
-        # 不會被當作path
-        # uses: ../actions/get-jira-project-version
-        # 這樣會跑到/home/runner/work/try-github-actions/try-github-actions/.github/actions/get-jira-project-version
-        # uses: ./.github/actions/get-jira-project-version
-        # 路徑錯誤
-        # uses: ./../.github/actions/get-jira-project-version
         uses: ./.github/actions/get-jira-project-version
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
           projectKey: TGA
-          versionName: $versionName
+          versionName: ${{ inputs.name }}
+          # versionName: $versionName
 
       - name: print version
         run: |
@@ -64,4 +54,3 @@ jobs:
           jiraToken: ${{secrets.JIRA_TOKEN}}
           versionId:  ${{steps.get_version.outputs.versionId}}
           projectId: 10001
-# this workflow is replaced by release-jira-release-note/action.yml
