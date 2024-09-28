@@ -5,6 +5,12 @@ on:
       version:
         required: true
         type: string
+      JIRA_DOMAIN: 
+        required: true
+        type: string
+      JIRA_TOKEN:
+        required: true
+        type: string
   # workflow_run:
   #   workflows:
   #     - 'Deploy to github page'
@@ -53,22 +59,26 @@ jobs:
         # uses: ./../.github/actions/get-jira-project-version
         uses: ./.github/actions/get-jira-project-version
         with:
-          jiraDomain: ${{secrets.JIRA_DOMAIN}}
-          jiraToken: ${{secrets.JIRA_TOKEN}}
+          # jiraDomain: ${{secrets.JIRA_DOMAIN}}
+          # jiraToken: ${{secrets.JIRA_TOKEN}}
+          # reusable workflow取不到secret，所以改用input
+          jiraDomain: ${{inputs.JIRA_DOMAIN}}
+          jiraToken: ${{inputs.JIRA_TOKEN}}
           projectKey: TGA
           versionName: ${{inputs.version}}
 
       - name: print version
         run: |
           echo ${{steps.get_version.outputs.versionId}}
-          # 不論觸發時機，一直得到master
+          # 改以前是分支名
+          # 改成reusable workflow後會是trial@...
           echo ${{github.ref_name}}
 
       - name: update jira release note
         uses: ./.github/actions/update-release-note
         with:
-          jiraDomain: ${{secrets.JIRA_DOMAIN}}
-          jiraToken: ${{secrets.JIRA_TOKEN}}
+          jiraDomain: ${{inputs.JIRA_DOMAIN}}
+          jiraToken: ${{inputs.JIRA_TOKEN}}
           versionId:  ${{steps.get_version.outputs.versionId}}
           projectId: 10001
 # this workflow is replaced by release-jira-release-note/action.yml
