@@ -43,6 +43,7 @@ jobs:
       - name: print version
         run: |
           echo ${{steps.get_version.outputs.versionId}}
+          # 不論觸發時機，一直得到master
           echo ${{github.ref_name}}
 
       - name: update jira release note
