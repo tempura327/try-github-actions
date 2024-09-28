@@ -68,4 +68,5 @@ jobs:
       # JIRA_TOKEN: $jiraToken
       JIRA_TOKEN: ${{github.env.foo}}
       JIRA_DOMAIN: github.env.jiraDomain
+      foo: 'abcdefg'
    
