@@ -1,4 +1,5 @@
 {
+  "type":"module",
   "scripts": {
     "talkToTempura": "node tools/index.js --name Tempura",
     "talkToJasmine": "node tools/index.js --name Jasmine"
