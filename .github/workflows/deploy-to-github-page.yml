@@ -58,6 +58,6 @@ jobs:
       # 不要直接取用secret，會取不到secret
       # JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
       # JIRA_DOMAIN: ${{ secrets.JIRA_DOMAIN }}
-      JIRA_TOKEN: $jiraToken
-      JIRA_DOMAIN: $jiraDomain
+      JIRA_TOKEN: ${{github.env.jiraToken}}
+      JIRA_DOMAIN: ${{github.env.jiraDomain}}
    
