@@ -71,8 +71,8 @@ jobs:
       # 錯誤
       # JIRA_TOKEN: ${{github.env.jiraToken}}
       # JIRA_TOKEN: $jiraToken
-      JIRA_TOKEN: ${{github.job.build.outputs.bar}}
-      JIRA_DOMAIN:  ${{github.job.build.outputs.bar}}
+      JIRA_TOKEN: ${{needs.build.outputs.bar}}
+      JIRA_DOMAIN:  ${{needs.build.outputs.bar}}
       foo: 'abcdefg'
     # env: 
     #   jiraToken: ${{ secrets.JIRA_TOKEN }}

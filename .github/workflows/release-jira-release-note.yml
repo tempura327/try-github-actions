@@ -38,10 +38,10 @@ jobs:
           npm list
         shell: bash
 
-      - name: download version artifact and get saved version
-        uses: actions/download-artifact@v4
-        with:
-          name: github-pages
+      # - name: download version artifact and get saved version
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: github-pages
       
       - name: print
         run: |
