@@ -9,9 +9,9 @@ inputs:
   versionName:
     required: true
   
-outputs:
-  versionId:
-    value: ${{ steps.foo.outputs.versionId }}
+# outputs:
+#   versionId:
+#     value: ${{ steps.foo.outputs.versionId }}
 
 runs:
   using: node20
