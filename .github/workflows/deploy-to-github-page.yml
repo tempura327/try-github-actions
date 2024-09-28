@@ -47,6 +47,6 @@ jobs:
         run: |
           cd ./.github/actions/
           ls
-      - uses: ./.github/actions//release-jira-release-note
+      - uses: ./.github/actions/release-jira-release-note
         with:
           version: ${{github.ref_name}}
