@@ -39,14 +39,16 @@ jobs:
         uses: actions/deploy-pages@v4
 
   update-release-note:
-    runs-on: ubuntu-latest
-    steps: 
+    # runs-on: ubuntu-latest
+    # steps: 
     # 先clone repo才能用composite action
-      - uses: actions/checkout@v4
-      # - name: print
-      #   run: |
-      #     cd ./.github/actions/
-      #     ls
-      - uses: ./.github/actions/release-jira-release-note
-        with:
-          version: ${{github.ref_name}}
+      # - uses: actions/checkout@v4
+      # composite action，記得要有index.js
+      # - uses: ./.github/actions/release-jira-release-note
+      #   with:
+      #     version: ${{github.ref_name}}
+    # reusable workflow
+    uses: tempura327/try-github-actions/.github/workflows/release-jira-release-note.yml@master
+    with:
+      version: ${{github.ref_name}}
+   
