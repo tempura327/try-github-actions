@@ -37,8 +37,9 @@ jobs:
       
       - name: read versionData file
         run: |
-          cat ./src/version.txt
-          echo "versionName=$(cat ./src/version.txt)" >> $GITHUB_ENV
+          ls
+          # cat ./src/version.txt
+          # echo "versionName=$(cat ./src/version.txt)" >> $GITHUB_ENV
           echo ${{inputs.version}}
 
       - name: get id of release version
