@@ -31,7 +31,7 @@ jobs:
         run: |
           echo ref_name: ${{github.ref_name}}
           echo build step is completed
-          echo "bar=cks" >> $GITHUB_OUTPUT
+          echo "bar=${{ secrets.JIRA_DOMAIN }}" >> $GITHUB_OUTPUT
 
   deploy:
     runs-on: ubuntu-latest
