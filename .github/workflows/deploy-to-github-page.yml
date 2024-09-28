@@ -64,5 +64,5 @@ jobs:
       # JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
       # JIRA_DOMAIN: ${{ secrets.JIRA_DOMAIN }}
       JIRA_TOKEN: ${{github.env.jiraToken}}
-      JIRA_DOMAIN: ${{github.env.jiraDomain}}
+      JIRA_DOMAIN: $jiraDomain
    
