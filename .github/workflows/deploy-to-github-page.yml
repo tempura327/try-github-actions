@@ -117,7 +117,7 @@ jobs:
           echo ${{github.ref_name}}
 
       - name: update jira release note
-        uses: ./../.github/actions/get-jira-project-version
+        uses: ./.github/actions/get-jira-project-version
         with:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
