@@ -24,6 +24,17 @@ jobs:
           npm install
           npm list
         shell: bash
+
+      - name: download version artifact and get saved version
+        uses: actions/download-artifact@v4
+        with:
+          name: versionData
+      
+      - name: read versionData file
+        run: |
+          cat ./src/version.txt
+          echo "versionName=$(cat ./src/version.txt)" >> $GITHUB_ENV
+
       - name: get id of release version
         id: get_version
         # uses: tempura327/try-github-actions/.github/actions/get-jira-project-version@master
@@ -38,7 +49,7 @@ jobs:
           jiraDomain: ${{secrets.JIRA_DOMAIN}}
           jiraToken: ${{secrets.JIRA_TOKEN}}
           projectKey: TGA
-          versionName: ${{github.ref_name}}
+          versionName: $versionName
 
       - name: print version
         run: |
