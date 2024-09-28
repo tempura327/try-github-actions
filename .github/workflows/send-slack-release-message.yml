@@ -24,7 +24,7 @@ jobs:
         with:
           # 使用瀏覽器打開Slack頻道就可以在網址上看到channel id(通常是C開頭)
           # 如果想要一次傳到多個頻道，就用,把channe id隔開
-          channel-id: '你的channel id'
+          channel-id: 'C07PKF2NNHX'
           # 想傳給人的話則使用user-id
           payload: |
             {
