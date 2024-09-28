@@ -41,7 +41,8 @@ jobs:
   update-release-note:
     runs-on: ubuntu-latest
     steps: 
+    # 先clone repo才能用composite action
+      - uses: actions/checkout@v4
       - uses: ./../.github/actions/release-jira-release-note
         with:
           version: ${{github.ref_name}}
-    
