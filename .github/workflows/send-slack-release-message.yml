@@ -4,7 +4,7 @@ name: Send a release message
 on:
   workflow_run:
     workflows:
-      - 'Release Jira release note'
+      - 'Deploy to github page'
     types:
       - completed
 
@@ -13,12 +13,18 @@ jobs:
     name: send message
     runs-on: ubuntu-latest
     steps:
+      - name: Get the latest version
+        # 取得master分支上最新的版號
+        run: |
+          echo "newVersion=$(git describe --tags $(git rev-list --tags --max-count=1 master) --abbrev=0)" >> $GITHUB_ENV
+          echo ref: ${{github.ref_name }}
       - name: Post to a Slack channel
         id: slack
         uses: slackapi/slack-github-action@v1.27.0
         with:
+          # 使用瀏覽器打開Slack頻道就可以在網址上看到channel id(通常是C開頭)
           # 如果想要一次傳到多個頻道，就用,把channe id隔開
-          channel-id: 'C07PKF2NNHX'
+          channel-id: '你的channel id'
           # 想傳給人的話則使用user-id
           payload: |
             {
@@ -28,7 +34,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "New version is deployed."
+                    "text": "New version $newVersion is deployed."
                   }
                 },
                 {
