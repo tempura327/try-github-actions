@@ -28,7 +28,7 @@ jobs:
       - name: download version artifact and get saved version
         uses: actions/download-artifact@v4
         with:
-          name: versionData
+          name: github-pages
       
       - name: read versionData file
         run: |

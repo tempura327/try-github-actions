@@ -18,7 +18,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./src
-          name: versionData
+          name: github-pages
       - name: print
         run: |
           echo ref_name: ${{github.ref_name}}
