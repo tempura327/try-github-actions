@@ -37,7 +37,8 @@ jobs:
       - run: npm install && npm install -g @lhci/cli@0.14.0
       - name: run-check
         run: | 
-          lhci autorun --outputDir=./lighthouse-check-results
+          lhci autorun
+          # lhci autorun --outputDir=./lighthouse-check-results
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
