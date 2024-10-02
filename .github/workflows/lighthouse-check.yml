@@ -8,7 +8,7 @@ on:
   #     - completed
   workflow_dispatch:
   # 一定要有push，不然status check UI不會出現
-  # push:
+  push:
     # branches:
       # - master
   pull_request:
