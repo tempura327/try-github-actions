@@ -1,0 +1,28 @@
+name: Try CodeQL
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  give-a-try:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Initializes CodeQL tools and creates a codebase for analysis.
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: JavaScript
+          build-mode: autobuild
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:JavaScript"
+          output: check-results
+          upload: failure-only
+
