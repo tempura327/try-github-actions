@@ -17,7 +17,8 @@ jobs:
         uses: github/codeql-action/init@v3
         with:
           languages: JavaScript
-          build-mode: autobuild
+          # JavaScript/TypeScript does not support the autobuild build mode
+          # build-mode: autobuild
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
