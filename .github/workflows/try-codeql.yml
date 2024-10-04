@@ -12,12 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Initializes CodeQL tools and creates a codebase for analysis.
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: JavaScript
-          # JavaScript/TypeScript does not support the autobuild build mode
+          # 如果是需要編譯的語言則要在定義build-mode，或自行寫build指令，JavaScript、TypeScript則兩者皆不需要
           # build-mode: autobuild
 
       - name: Perform CodeQL Analysis
@@ -34,4 +33,4 @@ jobs:
           sarif_file: results.sarif
           # Optional category for the results
           # Used to differentiate multiple results for one commit
-          category: my-analysis-tool
+          # category: my-analysis-tool
