@@ -1,4 +1,4 @@
-name: Try CodeQL
+name: CodeQL
 
 on:
   push:
