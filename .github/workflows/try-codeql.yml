@@ -5,9 +5,11 @@ on:
     branches:
       - master
 
+# 如果Workflow permissions設為"Read repository contents and packages permissions"代表是restricted模式，那就只會有content和package的read權限，此時就需要在workflow內設定permission
+# 關於restriced、permissive模式有的預設權限看https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#permissions-for-the-github_token
+# https://github.com/github/codeql/issues/8843
 permissions:
   actions: read
-  contents: read
   security-events: write
 
 jobs:
@@ -31,11 +33,4 @@ jobs:
           output: check-results
           upload: failure-only
 
-      # - name: Upload SARIF file
-      #   uses: github/codeql-action/upload-sarif@v3
-      #   with:
-      #     # Path to SARIF file relative to the root of the repository
-      #     sarif_file: codeql-scan/results.sarif
-      #     # Optional category for the results
-      #     # Used to differentiate multiple results for one commit
-      #     # category: my-analysis-tool
+     
