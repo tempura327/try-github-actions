@@ -11,8 +11,8 @@ env:
   str1: "{\"name\":\"Tempura\", \"jobs\":{\"fullTime\":\"frontend developer\", \"partTime\":\"no\"}, \"favorites\":[\"tempura ninja\"]}"
   # str2: '[{"name":"Tempura"}, {"name":"Ninja"}]'
   # str3: "{\"name\":\"Tempura\"}"
-  # arrStr: "['1', '2']"
-  # arrStr2: "[\"3\", \"4\"]"
+  arrStr: "['1', '2']"
+  arrStr2: "[\"3\", \"4\"]"
 
 jobs:
   run_js_file:
@@ -103,14 +103,18 @@ jobs:
   #     #     # 得到0
   #     #     echo ${#array[@]}
 
-  #     - name: test JSON function with array
-  #       run: |
-  #         echo ${{fromJSON(env.arrStr)}}
-  #         echo ${{fromJSON(env.arrStr2)}}
-  #         echo ${{fromJSON(env.arrStr).*}}
-  #         echo ${{fromJSON(env.arrStr)[0]}}
-  #         echo ${{fromJSON(env.arrStr2).*}}          
-  #         echo ${{fromJSON(env.arrStr2)[0]}} 
-  #         echo "----------"
-  #         echo ${{fromJSON(env.arrStr).*[0]}}         
-  #         echo ${{fromJSON(env.arrStr2).*[0]}}         
+      - name: test JSON function with array
+        run: |
+            echo ${{fromJSON(env.arrStr)}}
+            echo ${{fromJSON(env.arrStr2)}}
+            echo ${{fromJSON(env.arrStr).*}}
+            echo ${{fromJSON(env.arrStr)[0]}}        
+            echo ${{fromJSON(env.arrStr2)[0]}} 
+            echo "----------"
+            echo ${{fromJSON(env.arrStr)[0] == null}}        
+            echo ${{fromJSON(env.arrStr2)[0] == null}} 
+            echo ${{fromJSON(env.arrStr)[0] !== null}}        
+            echo ${{fromJSON(env.arrStr2)[0] !== null}} 
+            echo "----------"
+            echo ${{fromJSON(env.arrStr).*[0]}}         
+            echo ${{fromJSON(env.arrStr2).*[0]}}         
