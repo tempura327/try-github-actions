@@ -113,8 +113,8 @@ jobs:
             echo "----------"
             echo ${{fromJSON(env.arrStr)[0] == null}}        
             echo ${{fromJSON(env.arrStr2)[0] == null}} 
-            echo ${{fromJSON(env.arrStr)[0] !== null}}        
-            echo ${{fromJSON(env.arrStr2)[0] !== null}} 
+            echo ${{fromJSON(env.arrStr)[0] != null}}        
+            echo ${{fromJSON(env.arrStr2)[0] != null}} 
             echo "----------"
             echo ${{fromJSON(env.arrStr).*[0]}}         
             echo ${{fromJSON(env.arrStr2).*[0]}}         
