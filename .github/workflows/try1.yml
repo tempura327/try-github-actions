@@ -13,6 +13,7 @@ env:
   # str3: "{\"name\":\"Tempura\"}"
   arrStr: "['1', '2']"
   arrStr2: "[\"3\", \"4\"]"
+  arrStr3: "[]"
 
 jobs:
   run_js_file:
@@ -110,11 +111,14 @@ jobs:
             echo ${{fromJSON(env.arrStr).*}}
             echo ${{fromJSON(env.arrStr)[0]}}        
             echo ${{fromJSON(env.arrStr2)[0]}} 
-            echo "----------"
+            echo "---------- arrStr1 & 2 ----------"
             echo ${{fromJSON(env.arrStr)[0] == null}}        
             echo ${{fromJSON(env.arrStr2)[0] == null}} 
             echo ${{fromJSON(env.arrStr)[0] != null}}        
             echo ${{fromJSON(env.arrStr2)[0] != null}} 
+            echo "---------- arrStr3 ----------"
+            echo ${{fromJSON(env.arrStr3)[0] == null}} 
+            echo ${{fromJSON(env.arrStr3)[0] != null}}  
             echo "----------"
             echo ${{fromJSON(env.arrStr).*[0]}}         
             echo ${{fromJSON(env.arrStr2).*[0]}}         
