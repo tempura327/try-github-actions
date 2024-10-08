@@ -106,11 +106,11 @@ jobs:
 
       - name: test JSON function with array
         run: |
-            echo ${{fromJSON(env.arrStr)}}
-            echo ${{fromJSON(env.arrStr2)}}
-            echo ${{fromJSON(env.arrStr).*}}
-            echo ${{fromJSON(env.arrStr)[0]}}        
-            echo ${{fromJSON(env.arrStr2)[0]}} 
+            # echo ${{fromJSON(env.arrStr)}}
+            # echo ${{fromJSON(env.arrStr2)}}
+            # echo ${{fromJSON(env.arrStr).*}}
+            # echo ${{fromJSON(env.arrStr)[0]}}        
+            # echo ${{fromJSON(env.arrStr2)[0]}} 
             echo "---------- arrStr1 & 2 ----------"
             echo ${{fromJSON(env.arrStr)[0] == null}}        
             echo ${{fromJSON(env.arrStr2)[0] == null}} 
@@ -120,5 +120,16 @@ jobs:
             echo ${{fromJSON(env.arrStr3)[0] == null}} 
             echo ${{fromJSON(env.arrStr3)[0] != null}}  
             echo "----------"
-            echo ${{fromJSON(env.arrStr).*[0]}}         
-            echo ${{fromJSON(env.arrStr2).*[0]}}         
+            echo ${{fromJSON(env.arrStr).*[0] == null}}         
+            echo ${{fromJSON(env.arrStr2).*[0] == null}} 
+            echo ${{fromJSON(env.arrStr3).*[0] == null}}
+            echo ${{fromJSON(env.arrStr).*[0] != null}}         
+            echo ${{fromJSON(env.arrStr2).*[0] != null}}         
+            echo ${{fromJSON(env.arrStr3).*[0] != null}}  
+            echo "----------"
+            echo ${{fromJSON(env.arrStr).xx[0] == null}}         
+            echo ${{fromJSON(env.arrStr2).xx[0] == null}} 
+            echo ${{fromJSON(env.arrStr3).*[0] == null}}
+            echo ${{fromJSON(env.arrStr).xx[0] != null}}         
+            echo ${{fromJSON(env.arrStr2).xx[0] != null}}         
+            echo ${{fromJSON(env.arrStr3).xx[0] != null}}   
